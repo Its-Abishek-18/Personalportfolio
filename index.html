@@ -1,0 +1,2351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abishek M</title>
+  <meta name="description" content="Abishek M's portfolio" />
+  <meta property="og:title" content="Abishek M" />
+  <meta property="og:description" content="Abishek M's portfolio" />
+  <meta property="og:type" content="website" />
+
+  <!-- Exact Fonts: Inter, JetBrains Mono & Noto Sans Tamil for crisp Indic rendering -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Tamil:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       EXACT DITTO CSS & DESIGN TOKENS (from thanhlongnguyen.vercel.app)
+       ========================================================================== */
+    :root {
+      --font-sans: 'Inter', 'Noto Sans Tamil', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --color-orange: #ff611d;
+      --color-orange-hover: #ff4500;
+      --color-bg: #333333;
+      --color-text: #D6D2BD;
+      --color-card: #1a1a1a;
+      --color-terminal: #1a1a1a;
+      --color-neutral-900: #171717;
+      --color-red: #FF5F56;
+      --color-yellow: #FFBD2E;
+      --color-green: #27C93F;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      border: 0 solid;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      tab-size: 4;
+      line-height: 1.5;
+      font-family: var(--font-sans);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    ::selection {
+      background: var(--color-orange);
+      color: #000;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+      background-color: transparent;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+
+    /* Clean, noise-free background matching reference */
+    .bg {
+      display: none;
+    }
+
+    /* ==========================================================================
+       HEADER & FLOATING PILL DOCK NAVIGATION
+       ========================================================================== */
+    .desktop-top-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 50;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .top-header-inner {
+      width: 100%;
+      padding: 1rem 1rem;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .top-header-inner {
+        padding: 1rem 4rem;
+      }
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 800;
+      font-size: 1.25rem;
+    }
+
+    .logo-monogram {
+      width: 36px;
+      height: 36px;
+      background: var(--color-orange);
+      color: #000;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.15rem;
+      box-shadow: 0 4px 14px rgba(255, 97, 29, 0.3);
+    }
+
+    .desktop-nav-links {
+      display: none;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .desktop-nav-links {
+        display: flex;
+      }
+    }
+
+    .nav-item {
+      padding: 0.375rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 9999px;
+      color: var(--color-text);
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .nav-item:hover {
+      background-color: #ffffff;
+      color: #ff611d;
+    }
+
+    /* Centered Floating Pill Dock (Appears when scrolled) */
+    .floating-pill-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0.75rem;
+      width: 100%;
+      z-index: 50;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(-2.5rem);
+    }
+
+    .floating-pill-wrapper.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .floating-pill-box {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .floating-pill-nav {
+      display: flex;
+      gap: 0.25rem;
+      padding: 0.25rem;
+      border-radius: 9999px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: var(--color-text);
+      align-items: center;
+    }
+
+    .floating-pill-nav .nav-item {
+      padding: 0.375rem 0.85rem;
+      font-size: 0.85rem;
+    }
+
+    /* Mobile header */
+    .mobile-header-top {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-header-top {
+        display: none;
+      }
+    }
+
+    /* ==========================================================================
+       SECTION 1: HERO (Diagonal Squares Canvas + Rotating Language + JSON Terminal)
+       ========================================================================== */
+    .hero-wrap {
+      position: relative;
+      padding-top: 6rem;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 2560px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .hero-wrap {
+        padding-top: 8rem;
+      }
+    }
+
+    /* Squares Canvas */
+    .squares-canvas-container {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.10;
+      pointer-events: auto;
+    }
+
+    #squares-canvas {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .hero-content-inner {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      padding: 0 1rem;
+    }
+
+    /* Rotating Multi-Language Greeting (Exact Styling) */
+    .hero-title-greeting {
+      display: flex;
+      flex-wrap: wrap;
+      white-space: pre-wrap;
+      position: relative;
+      font-size: 3rem;
+      line-height: 1;
+      font-weight: 600;
+      color: var(--color-orange);
+      padding: 2.5rem 0;
+      font-family: var(--font-sans);
+      justify-content: center;
+      min-height: 1.3em;
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .hero-title-greeting {
+        font-size: 3.75rem;
+      }
+    }
+
+    .char-item {
+      display: inline-block;
+      transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.4s ease;
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .char-item.char-in {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+
+    .char-item.char-out {
+      transform: translateY(-120%);
+      opacity: 0;
+    }
+
+    /* macOS JSON Terminal Window (Exact Replica) */
+    .terminal-container {
+      background-color: var(--color-terminal);
+      border-radius: 8px;
+      padding-top: 0.875rem;
+      padding-bottom: 0.875rem;
+      display: inline-block;
+      position: relative;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+      transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s;
+      width: 100%;
+      max-width: 620px;
+      text-align: left;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .terminal-container:hover {
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .terminal-dots-row {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.75rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .term-dot {
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 9999px;
+    }
+
+    .term-dot-red { background-color: var(--color-red); }
+    .term-dot-yellow { background-color: var(--color-yellow); }
+    .term-dot-green { background-color: var(--color-green); }
+
+    .terminal-pre {
+      font-size: 0.72rem;
+      line-height: 1.6;
+      font-family: var(--font-mono);
+      margin-top: 1.25rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      color: var(--color-text);
+      white-space: pre-wrap;
+    }
+
+    @media (min-width: 768px) {
+      .terminal-pre {
+        font-size: 1rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .terminal-pre {
+        font-size: 1.15rem;
+      }
+    }
+
+    .text-orange {
+      color: var(--color-orange);
+      font-family: var(--font-mono);
+    }
+
+    /* Bouncing Down Arrow */
+    .arrow-scroll-box {
+      padding-top: 8rem;
+      cursor: pointer;
+    }
+
+    @media (min-width: 768px) {
+      .arrow-scroll-box {
+        padding-top: 14rem;
+      }
+    }
+
+    .arrow-bounce {
+      color: var(--color-orange);
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+      animation: bounce 1.5s infinite;
+      display: inline-block;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    .hero-bottom-gradient {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 8rem;
+      background-image: linear-gradient(to top, var(--color-bg), transparent);
+      filter: blur(16px);
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       SECTION 2: ABOUT ME & STICKY TIMELINE (Exact Replication)
+       ========================================================================== */
+    .about-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 6rem;
+      position: relative;
+    }
+
+    @media (min-width: 1024px) {
+      .about-section {
+        padding-top: 8.5rem;
+      }
+    }
+
+    .about-heading {
+      font-weight: 700;
+      font-size: 30px;
+      color: var(--color-text);
+    }
+
+    .about-subheading {
+      font-weight: 600;
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+      font-family: var(--font-mono);
+      color: var(--color-orange);
+      margin-top: 0.25rem;
+    }
+
+    .timeline-outer-wrap {
+      width: 100%;
+      font-family: var(--font-sans);
+      padding-top: 3.75rem;
+      padding-bottom: 5rem;
+    }
+
+    @media (min-width: 768px) {
+      .timeline-outer-wrap {
+        padding-top: 1rem;
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+      }
+    }
+
+    .timeline-container {
+      position: relative;
+      max-width: 80rem;
+      margin-left: auto;
+      margin-right: auto;
+      padding-bottom: 5rem;
+    }
+
+    .timeline-item {
+      display: flex;
+      justify-content: flex-start;
+      padding-top: 2.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .timeline-item {
+        padding-top: 7rem;
+        gap: 2.5rem;
+      }
+    }
+
+    .timeline-sticky-title {
+      position: sticky;
+      display: flex;
+      flex-direction: column;
+      z-index: 40;
+      align-items: flex-start;
+      top: 10rem;
+      align-self: flex-start;
+      max-width: 20rem;
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .timeline-sticky-title {
+        flex-direction: row;
+        align-items: center;
+        padding-left: 4rem;
+        max-width: 24rem;
+      }
+    }
+
+    .timeline-dot-container {
+      height: 2rem;
+      width: 2rem;
+      position: absolute;
+      left: 0.1rem;
+      border-radius: 9999px;
+      background-color: var(--color-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 45;
+    }
+
+    @media (min-width: 768px) {
+      .timeline-dot-container {
+        left: 0.55rem;
+      }
+    }
+
+    .timeline-dot-inner {
+      height: 0.75rem;
+      width: 0.75rem;
+      border-radius: 9999px;
+      background-color: var(--color-terminal);
+      border: 2px solid var(--color-orange);
+      box-shadow: 0 0 10px rgba(255, 97, 29, 0.4);
+    }
+
+    .timeline-year-desktop {
+      display: none;
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    @media (min-width: 768px) {
+      .timeline-year-desktop {
+        display: block;
+      }
+    }
+
+    .timeline-year-mobile {
+      display: block;
+      font-size: 1.5rem;
+      line-height: 2rem;
+      margin-bottom: 1rem;
+      text-align: left;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    @media (min-width: 768px) {
+      .timeline-year-mobile {
+        display: none;
+      }
+    }
+
+    .timeline-content-col {
+      position: relative;
+      padding-left: 4rem;
+      padding-right: 1rem;
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .timeline-content-col {
+        padding-left: 4rem;
+      }
+    }
+
+    .timeline-summary {
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      font-weight: 500;
+      font-family: var(--font-mono);
+      margin-bottom: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .timeline-summary {
+        font-size: 1rem;
+        line-height: 1.5rem;
+      }
+    }
+
+    .timeline-bullet-block {
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+
+    .timeline-bullet-item {
+      display: flex;
+      align-items: flex-start;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      font-family: var(--font-mono);
+      margin-bottom: 0.5rem;
+      gap: 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .timeline-bullet-item {
+        font-size: 1rem;
+      }
+    }
+
+    /* Vertical Laser Beam Progress Line */
+    .timeline-beam-track {
+      position: absolute;
+      left: 1rem;
+      top: 0;
+      bottom: 0;
+      overflow: hidden;
+      width: 3px;
+      background-image: linear-gradient(to bottom, transparent 0%, rgba(229, 231, 235, 0.25) 10%, rgba(229, 231, 235, 0.25) 90%, transparent 99%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+    }
+
+    @media (min-width: 768px) {
+      .timeline-beam-track {
+        left: 1.5rem;
+      }
+    }
+
+    .timeline-beam-glow {
+      position: absolute;
+      inset-inline: 0;
+      top: 0;
+      width: 3px;
+      height: 0px;
+      background-image: linear-gradient(to top, #FF611D 0%, #B33232 10%, transparent);
+      border-radius: 9999px;
+      box-shadow: 0 0 12px var(--color-orange);
+      transition: height 0.15s ease-out;
+    }
+
+    /* ==========================================================================
+       SECTION 3: QUOTE SECTION (Sticky Screen + Scroll Opacity Highlight)
+       ========================================================================== */
+    .quote-scroll-stage {
+      height: 180vh;
+      position: relative;
+    }
+
+    .quote-sticky-box {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-terminal);
+      font-weight: 500;
+      font-size: 1.875rem;
+      line-height: 1.35;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+    }
+
+    @media (min-width: 768px) {
+      .quote-sticky-box {
+        font-size: 2.25rem;
+        padding-left: 4rem;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .quote-sticky-box {
+        font-size: 3rem;
+      }
+    }
+
+    .quote-inner-text {
+      max-width: 56rem;
+      line-height: 1.4;
+    }
+
+    .quote-segment {
+      transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0.3;
+      color: rgba(214, 210, 189, 0.3);
+    }
+
+ 
+    .parallax-scroller-wrap {
+      padding-top: 2.5rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .parallax-scroller-wrap {
+        padding-top: 3.75rem;
+      }
+    }
+
+    .parallax {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroller {
+      white-space: nowrap;
+      text-align: center;
+      font-family: var(--font-sans);
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)) drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
+      display: flex;
+      width: max-content;
+    }
+
+    @media (min-width: 768px) {
+      .scroller {
+        font-size: 5rem;
+        line-height: 5rem;
+      }
+    }
+
+    .scroller-track-left {
+      animation: runMarqueeLeft 40s linear infinite;
+    }
+
+    .scroller-track-right {
+      animation: runMarqueeRight 40s linear infinite;
+    }
+
+    .parallax:hover .scroller {
+      animation-play-state: paused;
+    }
+
+    @keyframes runMarqueeLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes runMarqueeRight {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    .scroller span {
+      flex-shrink: 0;
+      padding-right: 1.5rem;
+    }
+
+    /* ==========================================================================
+       SECTION 5: FEATURED PROJECTS (Apple Deck Carousel Replica)
+       ========================================================================== */
+    .projects-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 7rem;
+      position: relative;
+    }
+
+    @media (min-width: 1024px) {
+      .projects-section {
+        padding-top: 8.5rem;
+      }
+    }
+
+    .projects-heading {
+      font-weight: 700;
+      font-size: 30px;
+      color: var(--color-text);
+    }
+
+    .projects-subheading {
+      font-weight: 600;
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+      font-family: var(--font-mono);
+      color: var(--color-orange);
+      margin-top: 0.25rem;
+    }
+
+    .projects-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 6rem;
+      padding-bottom: 4rem;
+      position: relative;
+      width: 100%;
+    }
+
+    @media (min-width: 1024px) {
+      .projects-section {
+        padding-top: 8rem;
+      }
+    }
+
+    .projects-heading {
+      font-weight: 700;
+      font-size: 30px;
+      color: var(--color-text);
+    }
+
+    .projects-subheading {
+      font-weight: 600;
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+      font-family: var(--font-mono);
+      color: var(--color-orange);
+      margin-top: 0.25rem;
+    }
+
+    .projects-bento-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      max-width: 1240px;
+      width: 100%;
+      margin: 3.5rem auto 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .projects-bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .bento-card {
+      background-color: var(--color-terminal);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s, border-color 0.3s;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 97, 29, 0.15);
+      border-color: rgba(255, 97, 29, 0.45);
+    }
+
+    .bento-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .bento-category-tag {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--color-orange);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .bento-status-badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: rgba(214, 210, 189, 0.7);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+    }
+
+    .bento-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .bento-desc {
+      color: rgba(214, 210, 189, 0.85);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Embedded Mini macOS Window / Terminal Preview */
+    .bento-preview-window {
+      background: #0d0d0d;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      line-height: 1.65;
+      overflow-x: auto;
+      box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.6);
+    }
+
+    .bento-preview-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 0.5rem;
+    }
+
+    .bento-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+
+    .bento-preview-title {
+      margin-left: auto;
+      font-size: 0.7rem;
+      color: rgba(214, 210, 189, 0.4);
+    }
+
+    /* Highlights & Metrics List */
+    .bento-metrics-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.85rem;
+      color: rgba(214, 210, 189, 0.9);
+      font-family: var(--font-mono);
+    }
+
+    .bento-metric-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .bento-metric-icon {
+      color: var(--color-orange);
+    }
+
+    /* Tech Stack Pills */
+    .bento-tech-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-pill {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--color-text);
+      transition: all 0.2s;
+    }
+
+    .bento-card:hover .tech-pill {
+      background: rgba(255, 97, 29, 0.08);
+      border-color: rgba(255, 97, 29, 0.25);
+    }
+
+    /* Action Button Footer */
+    .bento-card-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .btn-bento-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--color-orange);
+      color: #000;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.55rem 1.15rem;
+      border-radius: 9999px;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-bento-primary:hover {
+      background: var(--color-orange-hover);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .btn-bento-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--color-text);
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      transition: color 0.2s;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      padding: 0.5rem 0.75rem;
+    }
+
+    .btn-bento-secondary:hover {
+      color: var(--color-orange);
+    }
+
+    /* ==========================================================================
+       SECTION 6: TRAINING & CERTIFICATIONS (Structured Cards)
+       ========================================================================== */
+    .certs-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 6rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .certs-grid-deck {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      width: 100%;
+      margin-top: 3.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .certs-grid-deck {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .cert-card-box {
+      background-color: var(--color-terminal);
+      border-radius: 12px;
+      padding: 1.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .cert-card-box:hover {
+      border-color: var(--color-orange);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    }
+
+    .cert-pill-badge {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-orange);
+      background-color: rgba(255, 97, 29, 0.12);
+      border: 1px solid rgba(255, 97, 29, 0.3);
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      align-self: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .cert-name-text {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+
+    .cert-org-row {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: rgba(214, 210, 189, 0.65);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 1rem;
+    }
+
+    /* ==========================================================================
+       SECTION 7: CONTACT ME & INTERACTIVE FORM
+       ========================================================================== */
+    .contact-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 6rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .contact-grid-deck {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      width: 100%;
+      margin-top: 3.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .contact-grid-deck {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .contact-form-panel {
+      background-color: var(--color-terminal);
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+
+    .contact-input-field {
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-input-field label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: rgba(214, 210, 189, 0.7);
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-real-input {
+      width: 100%;
+      background-color: #111111;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      color: var(--color-text);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+
+    .contact-real-input:focus {
+      outline: none;
+      border-color: var(--color-orange);
+      background-color: #161616;
+    }
+
+    .contact-submit-btn {
+      width: 100%;
+      background-color: var(--color-orange);
+      color: #000;
+      font-weight: 700;
+      padding: 0.85rem;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .contact-submit-btn:hover {
+      background-color: var(--color-orange-hover);
+      color: #fff;
+    }
+
+    /* ==========================================================================
+       FOOTER (Exact layout of thanhlongnguyen.vercel.app with arrow links)
+       ========================================================================== */
+    .site-footer {
+      padding: 2rem 1rem;
+      text-align: center;
+      margin-top: 4rem;
+      position: relative;
+      max-width: 80rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-divider-hr {
+      border-top-width: 1px;
+      border-color: rgba(209, 213, 219, 0.2);
+      margin-bottom: 2rem;
+    }
+
+    .footer-brand-monogram {
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0 1rem;
+      font-family: var(--font-mono);
+      font-size: 1.15rem;
+      color: var(--color-orange);
+    }
+
+    .footer-row-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 3.75rem;
+      padding: 0 2rem;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-row-content {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .footer-left-author {
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-left-author {
+        text-align: left;
+      }
+    }
+
+    .footer-left-author p.author-name {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #fff;
+    }
+
+    .footer-left-author p.author-role {
+      color: var(--color-text);
+      font-size: 0.95rem;
+      margin-top: 0.25rem;
+    }
+
+    .footer-right-links {
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      width: 100%;
+      max-width: 260px;
+    }
+
+    @media (min-width: 768px) {
+      .footer-right-links {
+        text-align: right;
+      }
+    }
+
+    .footer-link-group {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .footer-link-group:hover {
+      color: var(--color-orange);
+    }
+
+    .footer-arrow-svg {
+      color: var(--color-orange);
+      transition: transform 0.3s ease;
+      margin-left: 0.5rem;
+    }
+
+    .footer-link-group:hover .footer-arrow-svg {
+      transform: translateX(4px);
+    }
+
+    /* Modal for Project Detail Expansion */
+    .project-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .project-modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .project-modal-card {
+      background-color: var(--color-terminal);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1.5rem;
+      max-width: 42rem;
+      width: 100%;
+      padding: 2.5rem;
+      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-size: 1.25rem;
+      color: #999;
+      cursor: pointer;
+    }
+
+    .modal-close-btn:hover {
+      color: #fff;
+    }
+
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: var(--color-terminal);
+      border: 1px solid var(--color-orange);
+      color: #fff;
+      padding: 0.85rem 1.5rem;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      z-index: 9999;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s;
+    }
+
+    .toast-msg.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-[#333333] text-[#D6D2BD] font-sans antialiased">
+
+  <!-- ==========================================================================
+       DESKTOP TOP HEADER (Fixed on top, smoothly transitions on scroll)
+       ========================================================================== -->
+  <div class="desktop-top-header hidden md:block" id="top-desktop-nav">
+    <div class="top-header-inner">
+      <a href="/" class="logo-container" aria-label="Abishek M">
+        <div class="logo-monogram">A</div>
+        <span style="font-weight: 700; color: #fff;">Abishek M</span>
+      </a>
+      <nav class="desktop-nav-links">
+        <a class="nav-item" href="#about">About</a>
+        <a class="nav-item" href="#projects">Projects</a>
+        <a class="nav-item" href="#certifications">Certifications</a>
+        <a class="nav-item" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       CENTERED FLOATING PILL NAVIGATION (Exact match of reference scrolled state)
+       ========================================================================== -->
+  <div class="floating-pill-wrapper hidden md:flex" id="floating-dock">
+    <div class="floating-pill-box">
+      <nav class="floating-pill-nav">
+        <a class="nav-item" href="#hero" aria-label="Home">
+          <div class="logo-monogram" style="width: 24px; height: 24px; font-size: 0.8rem; border-radius: 4px;">A</div>
+        </a>
+        <a class="nav-item" href="#about">About</a>
+        <a class="nav-item" href="#projects">Projects</a>
+        <a class="nav-item" href="#certifications">Certifications</a>
+        <a class="nav-item" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Mobile Top Logo Header -->
+  <div class="mobile-header-top md:hidden">
+    <a href="#hero" class="logo-container">
+      <div class="logo-monogram">A</div>
+      <span style="font-weight: 700; color: #fff;">Abishek M</span>
+    </a>
+  </div>
+
+  <!-- ==========================================================================
+       SECTION 1: HERO (Squares Canvas + Rotating Language Greeting + JSON Terminal)
+       ========================================================================== -->
+  <section class="hero-wrap" id="hero">
+    <!-- Diagonal Animated Squares Grid Canvas (Exact match from reference source code) -->
+    <div class="squares-canvas-container">
+      <canvas id="squares-canvas"></canvas>
+    </div>
+
+    <div class="hero-content-inner">
+      
+      <!-- Rotating Multi-Language Greeting ("Hello!", "Bonjour!", "Hola!", "안녕!", "Ciao!", "こんにちは!", "你好!", "வணக்கம்!") -->
+      <h1 class="hero-title-greeting" id="rotating-greeting" aria-label="Greetings">
+        <span class="char-item">H</span><span class="char-item">e</span><span class="char-item">l</span><span class="char-item">l</span><span class="char-item">o</span><span class="char-item">!</span>
+      </h1>
+
+      <!-- macOS Terminal JSON Window (Exact Ditto Replica) -->
+      <div class="terminal-container">
+        <div class="terminal-dots-row">
+          <div class="term-dot term-dot-red"></div>
+          <div class="term-dot term-dot-yellow"></div>
+          <div class="term-dot term-dot-green"></div>
+        </div>
+
+        <pre class="terminal-pre">{
+  <span style="color: #9cdcfe;">"about_me"</span>: {
+    <span style="color: #9cdcfe;">"name"</span>: <span class="text-orange" id="decrypt-name">"Abishek M"</span>,
+    <span style="color: #9cdcfe;">"career-in-progress"</span>: <span class="text-orange" id="decrypt-career">"B.Tech Computer Science &amp; Engineering"</span>,
+    <span style="color: #9cdcfe;">"current-career-focus"</span>: <span class="text-orange" id="decrypt-focus">"Developer &amp; UI/UX Designer"</span>
+  }
+}</pre>
+      </div>
+
+      <!-- Bouncing Arrow Prompt -->
+      <div class="arrow-scroll-box" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+        <div class="arrow-bounce">↓</div>
+      </div>
+
+    </div>
+
+    <div class="hero-bottom-gradient"></div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 2: ABOUT ME (Sticky Timeline with Glowing Vertical Laser Line)
+       ========================================================================== -->
+  <section class="about-section" id="about">
+    <h1 class="about-heading">ABOUT ME</h1>
+    <h2 class="about-subheading">CODE.EAT.SLEEP.REPEAT</h2>
+
+    <div class="timeline-outer-wrap">
+      <div class="timeline-container" id="timeline-box">
+        
+        <!-- Vertical Laser Beam Tracks (Exact implementation from reference) -->
+        <div class="timeline-beam-track">
+          <div class="timeline-beam-glow" id="timeline-laser-indicator"></div>
+        </div>
+
+        <!-- 2025 - Present -->
+        <div class="timeline-item">
+          <div class="timeline-sticky-title">
+            <div class="timeline-dot-container">
+              <div class="timeline-dot-inner"></div>
+            </div>
+            <h3 class="timeline-year-desktop">2025 - Present</h3>
+          </div>
+          <div class="timeline-content-col">
+            <h3 class="timeline-year-mobile">2025 - Present</h3>
+            <div>
+              <p class="timeline-summary">Embarking on advanced Computer Science, Cloud &amp; AI engineering</p>
+              <div class="timeline-bullet-block">
+                <div class="timeline-bullet-item" style="color: var(--color-orange); font-weight: 600;">Latest update &amp; achievements:</div>
+                <div class="timeline-bullet-item">
+                  <span>🎓</span>
+                  <span>Pursuing Bachelor of Technology in Computer Science &amp; Engineering @ <strong>Lovely Professional University</strong> (2025–2029)</span>
+                </div>
+                <div class="timeline-bullet-item">
+                  <span>🏆</span>
+                  <span>Collaborated in <strong>Infernoverse 24HRS Hackathon</strong>: Built and refined a working software prototype under intense 24-hour sprint pressure</span>
+                </div>
+                <div class="timeline-bullet-item">
+                  <span>💡</span>
+                  <span>Demonstrated technical adaptability, rapid problem-solving, and cross-disciplinary agility</span>
+                </div>
+                <div class="timeline-bullet-item">
+                  <span>☁️</span>
+                  <span>Mastering <strong>AWS Cloud Computing</strong> architecture &amp; foundational AI systems</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2024 - 2025 -->
+        <div class="timeline-item">
+          <div class="timeline-sticky-title">
+            <div class="timeline-dot-container">
+              <div class="timeline-dot-inner"></div>
+            </div>
+            <h3 class="timeline-year-desktop">2024 - 2025</h3>
+          </div>
+          <div class="timeline-content-col">
+            <h3 class="timeline-year-mobile">2024 - 2025</h3>
+            <div>
+              <p class="timeline-summary">Foundations of programming, computational logic &amp; creative design</p>
+              <div class="timeline-bullet-block">
+                <div class="timeline-bullet-item" style="color: var(--color-orange); font-weight: 600;">Key achievements:</div>
+                <div class="timeline-bullet-item">
+                  <span>👨🏻‍💻</span>
+                  <span>Wrote first programs in <strong>Python</strong> and <strong>C++</strong>; designed data models and CLI scripts</span>
+                </div>
+                <div class="timeline-bullet-item">
+                  <span>📜</span>
+                  <span>Completed Higher Secondary (12th Grade) @ <strong>Neelan Matric Hr Sec School, Chennai</strong></span>
+                </div>
+                <div class="timeline-bullet-item" style="color: var(--color-text); opacity: 0.7; padding-top: 0.25rem;">
+                  ... and engineered practical command-line applications!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2022 - 2023 -->
+        <div class="timeline-item">
+          <div class="timeline-sticky-title">
+            <div class="timeline-dot-container">
+              <div class="timeline-dot-inner"></div>
+            </div>
+            <h3 class="timeline-year-desktop">2022 - 2023</h3>
+          </div>
+          <div class="timeline-content-col">
+            <h3 class="timeline-year-mobile">2022 - 2023</h3>
+            <div>
+              <p class="timeline-summary">Secondary school education &amp; initial creative multimedia exploration</p>
+              <div class="timeline-bullet-block">
+                <div class="timeline-bullet-item" style="color: var(--color-orange); font-weight: 600;">At a glance:</div>
+                <div class="timeline-bullet-item">
+                  <span>🏫</span>
+                  <span>Completed Secondary School (10th Grade) @ <strong>Neelan Matric Hr Sec School, Chennai</strong></span>
+                </div>
+                <div class="timeline-bullet-item">
+                  <span>🎬</span>
+                  <span>Explored multimedia creation: Video Editing, VFX, and UI/UX design aesthetics</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 3: QUOTE SECTION (Sticky Screen with Scroll Opacity Illumination)
+       ========================================================================== -->
+  <div class="quote-scroll-stage" id="quote-stage">
+    <div class="quote-sticky-box">
+      <div class="quote-inner-text">
+        <span class="quote-segment" id="quote-p1">"If I have the belief that I can do it, </span>
+        <span class="quote-segment" id="quote-p2">I shall surely acquire the capacity to do it </span>
+        <span class="quote-segment" id="quote-p3">even if I may not have it at the beginning."</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       SECTION 4: PARALLAX INFINITE SCROLLER (Dual Opposite Tickers)
+       ========================================================================== -->
+  <div class="parallax-scroller-wrap">
+    <div class="parallax">
+      <div class="scroller scroller-track-left">
+        <span>&lt;Python&gt; &lt;C++&gt; &lt;AWS Cloud&gt; &lt;CLI Tools&gt; &lt;UI/UX&gt; &lt;SQL&gt; &nbsp;</span>
+        <span>&lt;Python&gt; &lt;C++&gt; &lt;AWS Cloud&gt; &lt;CLI Tools&gt; &lt;UI/UX&gt; &lt;SQL&gt; &nbsp;</span>
+        <span>&lt;Python&gt; &lt;C++&gt; &lt;AWS Cloud&gt; &lt;CLI Tools&gt; &lt;UI/UX&gt; &lt;SQL&gt; &nbsp;</span>
+      </div>
+    </div>
+    <div class="parallax">
+      <div class="scroller scroller-track-right">
+        <span>[AI Fundamentals] [Quantum Computing] [Aerospace Systems] [UAV Prototyping] [Video &amp; VFX] [Problem Solving] &nbsp;</span>
+        <span>[AI Fundamentals] [Quantum Computing] [Aerospace Systems] [UAV Prototyping] [Video &amp; VFX] [Problem Solving] &nbsp;</span>
+        <span>[AI Fundamentals] [Quantum Computing] [Aerospace Systems] [UAV Prototyping] [Video &amp; VFX] [Problem Solving] &nbsp;</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       SECTION 5: FEATURED PROJECTS (Sleek Modern 2-Column Bento Grid)
+       ========================================================================== -->
+  <section class="projects-section" id="projects">
+    <h1 class="projects-heading">FEATURED PROJECTS</h1>
+    <h2 class="projects-subheading">EXPLORE MY WORK</h2>
+
+    <div class="projects-bento-grid">
+      
+      <!-- Bento Card 1: Expense Tracker CLI -->
+      <div class="bento-card">
+        <div>
+          <div class="bento-top-row">
+            <span class="bento-category-tag">PYTHON / CLI AUTOMATION</span>
+            <span class="bento-status-badge">2025 • COMPLETED</span>
+          </div>
+          <h3 class="bento-title">Expense Tracker – Python CLI Tool</h3>
+          <p class="bento-desc">
+            A terminal-based personal financial utility that enables rapid logging, categorizing, and analysis of expenditures with atomic persistent CSV data serialization.
+          </p>
+
+          <!-- Mini Terminal Preview Window -->
+          <div class="bento-preview-window">
+            <div class="bento-preview-header">
+              <div class="bento-dot" style="background:#FF5F56;"></div>
+              <div class="bento-dot" style="background:#FFBD2E;"></div>
+              <div class="bento-dot" style="background:#27C93F;"></div>
+              <span class="bento-preview-title">expense_tracker.py</span>
+            </div>
+            <div style="color: #9cdcfe;">$ python tracker.py --add "AWS Cloud Credits" -a 4500 -c Infra</div>
+            <div style="color: #4ade80;">[OK] Logged transaction to expenses.csv (ID #1042)</div>
+            <div style="color: #9cdcfe; margin-top: 0.25rem;">$ python tracker.py --summary --month current</div>
+            <div style="color: var(--color-orange);">Total Expenses: ₹18,450.00 | Remaining Budget: ₹31,550.00</div>
+          </div>
+
+          <div class="bento-metrics-list">
+            <div class="bento-metric-item">
+              <span class="bento-metric-icon">⚡</span>
+              <span>Robust persistent CSV data storage across reboots</span>
+            </div>
+            <div class="bento-metric-item">
+              <span class="bento-metric-icon">📊</span>
+              <span>Monthly breakdown &amp; category-based financial filtering</span>
+            </div>
+            <div class="bento-metric-item">
+              <span class="bento-metric-icon">🛡️</span>
+              <span>Strict input sanitization &amp; automated balance warnings</span>
+            </div>
+          </div>
+
+          <div class="bento-tech-pills">
+            <span class="tech-pill">Python 3</span>
+            <span class="tech-pill">CSV Engine</span>
+            <span class="tech-pill">CLI Parser</span>
+            <span class="tech-pill">Data Modeling</span>
+            <span class="tech-pill">Terminal UX</span>
+          </div>
+        </div>
+
+        <div class="bento-card-actions">
+          <a href="https://github.com/Its-Abishek-18" target="_blank" rel="noopener noreferrer" class="btn-bento-primary">
+            <span>View Code</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+          </a>
+          <button class="btn-bento-secondary" onclick="openProjectModal('expense')">
+            <span>Details &amp; Story</span>
+            <span>→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bento Card 2: Infernoverse 24HRS Hackathon -->
+      <div class="bento-card">
+        <div>
+          <div class="bento-top-row">
+            <span class="bento-category-tag">24-HOUR SPRINT / PROTOTYPE</span>
+            <span class="bento-status-badge">2024 • SPRINT SHIPPED</span>
+          </div>
+          <h3 class="bento-title">Infernoverse 24HRS Hackathon Prototype</h3>
+          <p class="bento-desc">
+            Architected, developed, and deployed an end-to-end working software prototype within a strict 24-hour sprint deadline under high-intensity hackathon conditions.
+          </p>
+
+          <!-- Mini Terminal Preview Window -->
+          <div class="bento-preview-window">
+            <div class="bento-preview-header">
+              <div class="bento-dot" style="background:#FF5F56;"></div>
+              <div class="bento-dot" style="background:#FFBD2E;"></div>
+              <div class="bento-dot" style="background:#27C93F;"></div>
+              <span class="bento-preview-title">sprint_monitor.sh</span>
+            </div>
+            <div style="color: #ff5f56;">[INFERNOVERSE SPRINT RUNNER] T-minus 24:00:00</div>
+            <div style="color: #4ade80;">[OK] Sprint Core Engine Compiled (0.84s)</div>
+            <div style="color: #60a5fa;">[OK] Architecture Validated &amp; Modular Tests Passed</div>
+            <div style="color: var(--color-orange);">[STATUS]: Prototype Shipped &amp; Live Demo Active</div>
+          </div>
+
+          <div class="bento-metrics-list">
+            <div class="bento-metric-item">
+              <span class="bento-metric-icon">🏆</span>
+              <span>24-hour non-stop rapid architectural prototyping</span>
+            </div>
+            <div class="bento-metric-item">
+              <span class="bento-metric-icon">🤝</span>
+              <span>Agile multi-disciplinary team coordination &amp; sync</span>
+            </div>
+            <div class="bento-metric-item">
+              <span class="bento-metric-icon">🎯</span>
+              <span>Real-time problem decomposition &amp; crisis resolution</span>
+            </div>
+          </div>
+
+          <div class="bento-tech-pills">
+            <span class="tech-pill">Rapid Prototyping</span>
+            <span class="tech-pill">Software Architecture</span>
+            <span class="tech-pill">Agile Sprint</span>
+            <span class="tech-pill">Git Collaboration</span>
+            <span class="tech-pill">Hackathon</span>
+          </div>
+        </div>
+
+        <div class="bento-card-actions">
+          <a href="https://github.com/Its-Abishek-18" target="_blank" rel="noopener noreferrer" class="btn-bento-primary">
+            <span>View Code</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+          </a>
+          <button class="btn-bento-secondary" onclick="openProjectModal('hackathon')">
+            <span>Details &amp; Story</span>
+            <span>→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bento Card 3: Cloud Infrastructure (AWS) -->
+      <div class="bento-card">
+        <div>
+          <div class="bento-top-row">
+            <span class="bento-category-tag">CLOUD COMPUTING / INFRASTRUCTURE</span>
+            <span class="bento-status-badge">HCL GUVI CERTIFIED</span>
+          </div>
+          <h3 class="bento-title">AWS Scalable Cloud Architecture</h3>
+          <p class="bento-desc">
+            Configured and architected resilient cloud environments utilizing core AWS primitives with a focus on security, high availability, and least-privilege access.
+          </p>
+
+          <!-- Mini Terminal Preview Window -->
+          <div class="bento-preview-window">
+            <div class="bento-preview-header">
+              <div class="bento-dot" style="background:#FF5F56;"></div>
+              <div class="bento-dot" style="background:#FFBD2E;"></div>
+              <div class="bento-dot" style="background:#27C93F;"></div>
+              <span class="bento-preview-title">aws_topology.yml</span>
+            </div>
+            <div style="color: #9cdcfe;">$ aws cloud-topology --verify</div>
+            <div style="color: #4ade80;">[VPC 10.0.0.0/16] ──> [EC2 Linux Compute Node: healthy]</div>
+            <div style="color: #60a5fa;">                  └──> [S3 Encrypted Bucket: AES-256]</div>
+            <div style="color: var(--color-orange);">[IAM Policy]: Least-Privilege Enforced (HCL GUVI Verified)</div>
+          </div>
+
+          <div class="bento-metrics-list">
+            <div class="bento-metric-item">
+              <span class="bento-metric-icon">☁️</span>
+              <span>EC2 compute provisioning &amp; security groups</span>
+            </div>
+            <div class="bento-metric-item">
+              <span class="bento-metric-icon">📦</span>
+              <span>S3 bucket lifecycle management &amp; access policies</span>
+            </div>
+            <div class="bento-metric-item">
+              <span class="bento-metric-icon">🔒</span>
+              <span>IAM role management &amp; credential hardening</span>
+            </div>
+          </div>
+
+          <div class="bento-tech-pills">
+            <span class="tech-pill">AWS Cloud</span>
+            <span class="tech-pill">EC2 Compute</span>
+            <span class="tech-pill">S3 Storage</span>
+            <span class="tech-pill">IAM Security</span>
+            <span class="tech-pill">Cloud Architecture</span>
+          </div>
+        </div>
+
+        <div class="bento-card-actions">
+          <a href="https://github.com/Its-Abishek-18" target="_blank" rel="noopener noreferrer" class="btn-bento-primary">
+            <span>View Code</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+          </a>
+          <button class="btn-bento-secondary" onclick="openProjectModal('cloud')">
+            <span>Details &amp; Story</span>
+            <span>→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bento Card 4: Aerospace & UAV Systems -->
+      <div class="bento-card">
+        <div>
+          <div class="bento-top-row">
+            <span class="bento-category-tag">AEROSPACE &amp; EMBEDDED SYSTEMS</span>
+            <span class="bento-status-badge">RESEARCH &amp; LAB</span>
+          </div>
+          <h3 class="bento-title">Aerospace &amp; UAV Systems Lab</h3>
+          <p class="bento-desc">
+            Experimental telemetry and mission-system architectures for unmanned aerial vehicles, focusing on sensor datalinks, flight stability, and digital records preservation.
+          </p>
+
+          <!-- Mini Terminal Preview Window -->
+          <div class="bento-preview-window">
+            <div class="bento-preview-header">
+              <div class="bento-dot" style="background:#FF5F56;"></div>
+              <div class="bento-dot" style="background:#FFBD2E;"></div>
+              <div class="bento-dot" style="background:#27C93F;"></div>
+              <span class="bento-preview-title">telemetry_rx.py</span>
+            </div>
+            <div style="color: #c084fc;">[UAV-LINK 915MHz] Connected to Ground Control Station</div>
+            <div style="color: #4ade80;">Telemetry: Pitch +1.8° | Roll -0.4° | Alt 145m AGL | Sats: 14</div>
+            <div style="color: #60a5fa;">Datalink Status: 100Hz Packet Stream [Preserved to Blackbox]</div>
+            <div style="color: var(--color-orange);">Fail-Safe Mode: Armed &amp; Autonomous Return-To-Home [Ready]</div>
+          </div>
+
+          <div class="bento-metrics-list">
+            <div class="bento-metric-item">
+              <span class="bento-metric-icon">🛰️</span>
+              <span>High-frequency telemetry stream capture &amp; logging</span>
+            </div>
+            <div class="bento-metric-item">
+              <span class="bento-metric-icon">🚁</span>
+              <span>UAV flight dynamics &amp; state machine prototyping</span>
+            </div>
+            <div class="bento-metric-item">
+              <span class="bento-metric-icon">💾</span>
+              <span>Digital preservation protocol for mission telemetry data</span>
+            </div>
+          </div>
+
+          <div class="bento-tech-pills">
+            <span class="tech-pill">Aerospace Tech</span>
+            <span class="tech-pill">UAV Telemetry</span>
+            <span class="tech-pill">Embedded Systems</span>
+            <span class="tech-pill">Data Preservation</span>
+            <span class="tech-pill">Sensors</span>
+          </div>
+        </div>
+
+        <div class="bento-card-actions">
+          <a href="https://github.com/Its-Abishek-18" target="_blank" rel="noopener noreferrer" class="btn-bento-primary">
+            <span>View Code</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+          </a>
+          <button class="btn-bento-secondary" onclick="openProjectModal('aerospace')">
+            <span>Details &amp; Story</span>
+            <span>→</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 6: TRAINING & CERTIFICATIONS (Structured Cards)
+       ========================================================================== -->
+  <section class="certs-section" id="certifications">
+    <h1 class="projects-heading">CREDENTIALS</h1>
+    <h2 class="projects-subheading">TRAINING &amp; CERTIFICATIONS</h2>
+
+    <div class="certs-grid-deck">
+      <div class="cert-card-box">
+        <div>
+          <span class="cert-pill-badge">Cloud Architecture</span>
+          <h3 class="cert-name-text">Basics of AWS Cloud Computing</h3>
+        </div>
+        <div class="cert-org-row">
+          Issuer: <strong style="color: #fff;">HCL GUVI</strong>
+        </div>
+      </div>
+
+      <div class="cert-card-box">
+        <div>
+          <span class="cert-pill-badge">Intelligence Systems</span>
+          <h3 class="cert-name-text">Artificial Intelligence Fundamentals</h3>
+        </div>
+        <div class="cert-org-row">
+          Issuer: <strong style="color: #fff;">HCL GUVI</strong>
+        </div>
+      </div>
+
+      <div class="cert-card-box">
+        <div>
+          <span class="cert-pill-badge">Quantum Paradigms</span>
+          <h3 class="cert-name-text">Basics of Quantum Computing</h3>
+        </div>
+        <div class="cert-org-row">
+          Issuer: <strong style="color: #fff;">IBM SkillsBuild</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 7: CONTACT ME
+       ========================================================================== -->
+  <section class="contact-section" id="contact">
+    <h1 class="projects-heading">CONTACT</h1>
+    <h2 class="projects-subheading">LET'S CONNECT</h2>
+
+    <div class="contact-grid-deck">
+      
+      <!-- Direct Contact Info Cards -->
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        <a href="mailto:abishekverse18@gmail.com" class="cert-card-box" style="flex-direction: row; align-items: center; gap: 1rem;">
+          <div style="color: var(--color-orange); font-size: 1.5rem;">✉</div>
+          <div>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(214,210,189,0.5); text-transform: uppercase;">Email</div>
+            <div style="font-weight: 600; color: #fff;">abishekverse18@gmail.com</div>
+          </div>
+        </a>
+
+        <a href="https://linkedin.com/in/abishek-m18" target="_blank" rel="noopener noreferrer" class="cert-card-box" style="flex-direction: row; align-items: center; gap: 1rem;">
+          <div style="color: var(--color-orange); font-size: 1.5rem;">💼</div>
+          <div>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(214,210,189,0.5); text-transform: uppercase;">LinkedIn</div>
+            <div style="font-weight: 600; color: #fff;">linkedin.com/in/abishek-m18</div>
+          </div>
+        </a>
+
+        <a href="https://github.com/Its-Abishek-18" target="_blank" rel="noopener noreferrer" class="cert-card-box" style="flex-direction: row; align-items: center; gap: 1rem;">
+          <div style="color: var(--color-orange); font-size: 1.5rem;">🐙</div>
+          <div>
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(214,210,189,0.5); text-transform: uppercase;">GitHub</div>
+            <div style="font-weight: 600; color: #fff;">github.com/Its-Abishek-18</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Validated Contact Form -->
+      <div class="contact-form-panel">
+        <form id="contact-form-el">
+          <div class="contact-input-field">
+            <label for="usr-name">Name</label>
+            <input type="text" id="usr-name" class="contact-real-input" placeholder="Your Name" required />
+          </div>
+
+          <div class="contact-input-field">
+            <label for="usr-email">Email</label>
+            <input type="email" id="usr-email" class="contact-real-input" placeholder="your.email@example.com" required />
+          </div>
+
+          <div class="contact-input-field">
+            <label for="usr-subject">Subject</label>
+            <input type="text" id="usr-subject" class="contact-real-input" placeholder="Subject" required />
+          </div>
+
+          <div class="contact-input-field">
+            <label for="usr-msg">Message</label>
+            <textarea id="usr-msg" class="contact-real-input" rows="4" placeholder="Your message here..." required></textarea>
+          </div>
+
+          <button type="submit" class="contact-submit-btn">
+            <span>Send Message</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l14 0"></path><path d="M15 16l4 -4"></path><path d="M15 8l4 4"></path></svg>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER (Exact Replication of thanhlongnguyen.vercel.app with Arrow Links)
+       ========================================================================== -->
+  <footer class="site-footer">
+    <hr class="footer-divider-hr" />
+
+    <div class="footer-brand-monogram">
+      <div class="logo-monogram" style="width: 28px; height: 28px; font-size: 0.95rem; border-radius: 6px;">A</div>
+      <span>/</span>
+      <span style="font-weight: 700; color: #fff;">PORTFOLIO</span>
+    </div>
+
+    <div class="footer-row-content">
+      <div class="footer-left-author">
+        <p class="author-name">Abishek M</p>
+        <p class="author-role">Passionate learner. Innovative developer &amp; designer.</p>
+      </div>
+
+      <div class="footer-right-links">
+        <div class="footer-link-group" onclick="window.open('https://linkedin.com/in/abishek-m18', '_blank')">
+          <span style="flex: 1; text-align: left;">LinkedIn</span>
+          <svg class="footer-arrow-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+        </div>
+
+        <div class="footer-link-group" onclick="window.open('https://github.com/Its-Abishek-18', '_blank')">
+          <span style="flex: 1; text-align: left;">GitHub</span>
+          <svg class="footer-arrow-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+        </div>
+
+        <div class="footer-link-group" onclick="window.location.href='mailto:abishekverse18@gmail.com'">
+          <span style="flex: 1; text-align: left;">Email</span>
+          <svg class="footer-arrow-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal for Project Details (Apple-style expand) -->
+  <div class="project-modal-backdrop" id="project-modal" onclick="closeProjectModal(event)">
+    <div class="project-modal-card" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeProjectModal()">✕</button>
+      <div id="modal-content-body"></div>
+    </div>
+  </div>
+
+  <div class="toast-msg" id="toast-notify">Message sent successfully!</div>
+
+  <!-- ==========================================================================
+       JAVASCRIPT: Squares Canvas, Rotating Greetings, Scroll Spy, Quote Glow
+       ========================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // 1. EXACT SQUARES CANVAS IMPLEMENTATION (Replicated from reference chunk)
+      const canvas = document.getElementById('squares-canvas');
+      const ctx = canvas.getContext('2d');
+      const squareSize = 40;
+      const speed = 0.5;
+      let offset = { x: 0, y: 0 };
+      let hoveredSquare = null;
+
+      function resizeSquaresCanvas() {
+        canvas.width = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+      }
+      resizeSquaresCanvas();
+      window.addEventListener('resize', resizeSquaresCanvas);
+
+      canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        const col = Math.floor((mouseX + offset.x) / squareSize);
+        const row = Math.floor((mouseY + offset.y) / squareSize);
+        hoveredSquare = { col, row };
+      });
+
+      canvas.addEventListener('mouseleave', () => {
+        hoveredSquare = null;
+      });
+
+      function drawSquares() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const startX = - (offset.x % squareSize);
+        const startY = - (offset.y % squareSize);
+
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+
+        for (let x = startX; x < canvas.width; x += squareSize) {
+          for (let y = startY; y < canvas.height; y += squareSize) {
+            const col = Math.floor((x + offset.x) / squareSize);
+            const row = Math.floor((y + offset.y) / squareSize);
+
+            // Hover fill
+            if (hoveredSquare && hoveredSquare.col === col && hoveredSquare.row === row) {
+              ctx.fillStyle = 'rgba(255, 97, 29, 0.35)';
+              ctx.fillRect(x, y, squareSize, squareSize);
+            }
+
+            ctx.strokeRect(x, y, squareSize, squareSize);
+          }
+        }
+
+        // Vignette Radial Gradient (Exact from reference)
+        const radius = Math.sqrt(canvas.width * canvas.width + canvas.height * canvas.height) / 2;
+        const grad = ctx.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, radius);
+        grad.addColorStop(0, "rgba(0, 0, 0, 0)");
+        grad.addColorStop(1, "#060606");
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+
+      function updateSquares() {
+        offset.x = (offset.x - speed + squareSize) % squareSize;
+        offset.y = (offset.y - speed + squareSize) % squareSize;
+        drawSquares();
+        requestAnimationFrame(updateSquares);
+      }
+      requestAnimationFrame(updateSquares);
+
+      // 2. ROTATING MULTI-LANGUAGE GREETING (8 Languages: Vietnamese removed, Tamil added)
+      const greetingEl = document.getElementById('rotating-greeting');
+      const greetings = [
+        "Hello!",        // English
+        "Bonjour!",      // French
+        "Hola!",         // Spanish
+        "안녕!",         // Korean
+        "Ciao!",         // Italian
+        "こんにちは!",    // Japanese
+        "你好!",         // Chinese
+        "வணக்கம்!"       // Tamil
+      ];
+      let currentLangIndex = 0;
+
+      // Support for complex grapheme clusters (prevents breaking Indic / Tamil pulli and combining characters)
+      function getGraphemes(text) {
+        if (typeof Intl !== 'undefined' && Intl.Segmenter) {
+          const segmenter = new Intl.Segmenter(undefined, { granularity: 'grapheme' });
+          return Array.from(segmenter.segment(text), s => s.segment);
+        }
+        // Fallback preserving Tamil combining vowels and virama / pulli
+        return text.match(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[\s\S][\u0300-\u036f\u0B80-\u0BFF]*/g) || Array.from(text);
+      }
+
+      function renderGreetingText(str) {
+        if (!greetingEl) return;
+        greetingEl.innerHTML = '';
+        const graphemeList = getGraphemes(str);
+        graphemeList.forEach((cluster, idx) => {
+          const span = document.createElement('span');
+          span.className = 'char-item char-in';
+          span.textContent = cluster;
+          greetingEl.appendChild(span);
+          setTimeout(() => {
+            span.classList.remove('char-in');
+          }, idx * 45 + 20);
+        });
+      }
+
+      function switchNextGreeting() {
+        if (!greetingEl) return;
+        const spans = greetingEl.querySelectorAll('.char-item');
+        spans.forEach((span, idx) => {
+          setTimeout(() => {
+            span.classList.add('char-out');
+          }, idx * 25);
+        });
+
+        setTimeout(() => {
+          currentLangIndex = (currentLangIndex + 1) % greetings.length;
+          renderGreetingText(greetings[currentLangIndex]);
+        }, spans.length * 25 + 300);
+      }
+
+      renderGreetingText(greetings[0]);
+      setInterval(switchNextGreeting, 3600);
+
+      // 3. TEXT SCRAMBLE / DECRYPT EFFECT IN JSON TERMINAL
+      function decryptEffect(elementId, finalText) {
+        const el = document.getElementById(elementId);
+        if (!el) return;
+        const chars = "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
+        let iterations = 0;
+        const interval = setInterval(() => {
+          el.innerText = `"${finalText.split("").map((letter, index) => {
+            if (index < iterations) return letter;
+            return chars[Math.floor(Math.random() * chars.length)];
+          }).join("")}"`;
+
+          if (iterations >= finalText.length) {
+            clearInterval(interval);
+          }
+          iterations += 1;
+        }, 30);
+      }
+
+      setTimeout(() => {
+        decryptEffect('decrypt-name', 'Abishek M');
+        setTimeout(() => decryptEffect('decrypt-career', 'B.Tech Computer Science & Engineering'), 300);
+        setTimeout(() => decryptEffect('decrypt-focus', 'Developer & UI/UX Designer'), 600);
+      }, 500);
+
+      // 4. FLOATING DOCK VISIBILITY ON SCROLL
+      const topNav = document.getElementById('top-desktop-nav');
+      const floatingDock = document.getElementById('floating-dock');
+
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        if (scrollY > 120) {
+          if (topNav) topNav.style.opacity = '0';
+          if (floatingDock) floatingDock.classList.add('visible');
+        } else {
+          if (topNav) topNav.style.opacity = '1';
+          if (floatingDock) floatingDock.classList.remove('visible');
+        }
+      });
+
+      // 5. TIMELINE LASER PROGRESS GLOW
+      const timelineBox = document.getElementById('timeline-box');
+      const laserIndicator = document.getElementById('timeline-laser-indicator');
+
+      function updateLaser() {
+        if (!timelineBox || !laserIndicator) return;
+        const rect = timelineBox.getBoundingClientRect();
+        const winH = window.innerHeight;
+        const startOffset = winH * 0.25;
+        const totalHeight = rect.height;
+        const currentScrolled = startOffset - rect.top;
+        let progress = (currentScrolled / totalHeight) * 100;
+        progress = Math.max(0, Math.min(progress, 100));
+        laserIndicator.style.height = `${progress}%`;
+      }
+
+      // 6. QUOTE SECTION SCROLL LIGHTING (Exact 3-tier illumination from reference bundle)
+      const q1 = document.getElementById('quote-p1');
+      const q2 = document.getElementById('quote-p2');
+      const q3 = document.getElementById('quote-p3');
+      const quoteStage = document.getElementById('quote-stage');
+
+      function updateQuoteLighting() {
+        if (!quoteStage) return;
+        const rect = quoteStage.getBoundingClientRect();
+        const n = quoteStage.offsetHeight;
+        const s = window.innerHeight;
+        const i = Math.max(0, Math.min(1, -rect.top / (n - s)));
+        const o = [0.2, 0.4, 0.6];
+        [q1, q2, q3].forEach((el, idx) => {
+          if (!el) return;
+          if (i >= o[idx]) {
+            el.style.opacity = '1';
+            el.style.color = 'rgb(255, 97, 29)';
+          } else {
+            el.style.opacity = '0.3';
+            el.style.color = 'rgba(214, 210, 189, 0.3)';
+          }
+        });
+      }
+
+      // Buttery smooth, passive rAF scroll handler
+      let scrollTicking = false;
+      function handleScroll() {
+        if (!scrollTicking) {
+          requestAnimationFrame(() => {
+            updateLaser();
+            updateQuoteLighting();
+            scrollTicking = false;
+          });
+          scrollTicking = true;
+        }
+      }
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      updateLaser();
+      updateQuoteLighting();
+
+      // 7. CAROUSEL PREV / NEXT BUTTONS
+      const track = document.getElementById('projects-track');
+      const prevBtn = document.getElementById('scroll-prev-btn');
+      const nextBtn = document.getElementById('scroll-next-btn');
+
+      if (track && prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => {
+          track.scrollBy({ left: -360, behavior: 'smooth' });
+        });
+        nextBtn.addEventListener('click', () => {
+          track.scrollBy({ left: 360, behavior: 'smooth' });
+        });
+      }
+
+      // 8. CONTACT FORM SUBMIT
+      const cForm = document.getElementById('contact-form-el');
+      const toast = document.getElementById('toast-notify');
+      if (cForm) {
+        cForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('usr-name').value;
+          cForm.reset();
+          toast.textContent = `Thanks, ${name}! Your message has been sent.`;
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 3500);
+        });
+      }
+    });
+
+    // 9. PROJECT DETAIL MODALS
+    const projectDetails = {
+      expense: {
+        category: "PYTHON / CLI AUTOMATION",
+        title: "Expense Tracker – Python CLI Tool",
+        desc: "A fully functional command-line expense tracker letting users log, categorize, and review daily expenses with persistent CSV file data storage.",
+        bullets: [
+          "Built a menu-driven terminal interface to add, remove, and review financial transactions.",
+          "Persistent CSV storage preserving data integrity across reboot sessions.",
+          "Custom query filters for categorization and total expense aggregations."
+        ],
+        github: "https://github.com/Its-Abishek-18"
+      },
+      hackathon: {
+        category: "24-HOUR SPRINT / HACKATHON",
+        title: "Infernoverse 24HRS Software Prototype",
+        desc: "Collaborated under intense time constraints to design, architect, and ship a functional prototype in a single 24-hour sprint.",
+        bullets: [
+          "Applied rapid problem-solving and cross-disciplinary thinking to ideate, build, and refine solutions.",
+          "Demonstrated agility, technical resilience, and high-pressure team execution.",
+          "Evaluated for architectural feasibility and real-time execution."
+        ],
+        github: "https://github.com/Its-Abishek-18"
+      },
+      cloud: {
+        category: "CLOUD COMPUTING / AWS",
+        title: "AWS Cloud Infrastructure Deployments",
+        desc: "Practical hands-on implementations utilizing AWS cloud computing primitives.",
+        bullets: [
+          "Basics of AWS Cloud Computing verified through HCL GUVI.",
+          "Explored virtual compute instances, scalable storage buckets (S3), and security access policies (IAM).",
+          "Understanding of resilient cloud architecture patterns."
+        ],
+        github: "https://github.com/Its-Abishek-18"
+      },
+      aerospace: {
+        category: "AEROSPACE & HARDWARE",
+        title: "Aerospace Systems & UAV Prototyping",
+        desc: "Passion-driven exploration into unmanned aerial systems, telemetry protocols, and digital preservation concepts.",
+        bullets: [
+          "Study of UAV flight dynamics, sensor telemetry, and embedded computing.",
+          "Prototyping software architectures for flight controls and ground stations.",
+          "Digital preservation methodologies for system records and telemetry data."
+        ],
+        github: "https://github.com/Its-Abishek-18"
+      }
+    };
+
+    function openProjectModal(key) {
+      const data = projectDetails[key];
+      if (!data) return;
+      const modal = document.getElementById('project-modal');
+      const body = document.getElementById('modal-content-body');
+      body.innerHTML = `
+        <p style="font-family:var(--font-mono); font-size:0.85rem; color:var(--color-orange); text-transform:uppercase; margin-bottom:0.5rem;">${data.category}</p>
+        <h2 style="font-size:1.85rem; font-weight:700; color:#fff; margin-bottom:1rem;">${data.title}</h2>
+        <p style="color:var(--color-text); line-height:1.7; margin-bottom:1.5rem;">${data.desc}</p>
+        <div style="font-family:var(--font-mono); font-size:0.92rem; margin-bottom:2rem; display:flex; flex-direction:column; gap:0.75rem;">
+          ${data.bullets.map(b => `<div style="display:flex; gap:0.5rem;"><span>⚡</span><span>${b}</span></div>`).join('')}
+        </div>
+        <a href="${data.github}" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:0.5rem; background:var(--color-orange); color:#000; font-weight:700; padding:0.7rem 1.4rem; border-radius:9999px;">
+          <span>View on GitHub</span>
+          <span>↗</span>
+        </a>
+      `;
+      modal.classList.add('active');
+    }
+
+    function closeProjectModal() {
+      const modal = document.getElementById('project-modal');
+      if (modal) modal.classList.remove('active');
+    }
+  </script>
+</body>
+</html>
