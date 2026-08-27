@@ -900,6 +900,9 @@
       .projects-bento-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+      .projects-bento-grid .bento-card:last-child:nth-child(odd) {
+        grid-column: span 2;
+      }
     }
 
     .bento-card {
@@ -2136,68 +2139,6 @@
         </div>
       </div>
 
-      <!-- Bento Card 4: Aerospace & UAV Systems -->
-      <div class="bento-card">
-        <div>
-          <div class="bento-top-row">
-            <span class="bento-category-tag">AEROSPACE &amp; EMBEDDED SYSTEMS</span>
-            <span class="bento-status-badge">RESEARCH &amp; LAB</span>
-          </div>
-          <h3 class="bento-title">Aerospace &amp; UAV Systems Lab</h3>
-          <p class="bento-desc">
-            Experimental telemetry and mission-system architectures for unmanned aerial vehicles, focusing on sensor datalinks, flight stability, and digital records preservation.
-          </p>
-
-          <!-- Mini Terminal Preview Window -->
-          <div class="bento-preview-window">
-            <div class="bento-preview-header">
-              <div class="bento-dot" style="background:#FF5F56;"></div>
-              <div class="bento-dot" style="background:#FFBD2E;"></div>
-              <div class="bento-dot" style="background:#27C93F;"></div>
-              <span class="bento-preview-title">telemetry_rx.py</span>
-            </div>
-            <div style="color: #c084fc;">[UAV-LINK 915MHz] Connected to Ground Control Station</div>
-            <div style="color: #4ade80;">Telemetry: Pitch +1.8° | Roll -0.4° | Alt 145m AGL | Sats: 14</div>
-            <div style="color: #60a5fa;">Datalink Status: 100Hz Packet Stream [Preserved to Blackbox]</div>
-            <div style="color: var(--color-orange);">Fail-Safe Mode: Armed &amp; Autonomous Return-To-Home [Ready]</div>
-          </div>
-
-          <div class="bento-metrics-list">
-            <div class="bento-metric-item">
-              <span class="bento-metric-icon">🛰️</span>
-              <span>High-frequency telemetry stream capture &amp; logging</span>
-            </div>
-            <div class="bento-metric-item">
-              <span class="bento-metric-icon">🚁</span>
-              <span>UAV flight dynamics &amp; state machine prototyping</span>
-            </div>
-            <div class="bento-metric-item">
-              <span class="bento-metric-icon">💾</span>
-              <span>Digital preservation protocol for mission telemetry data</span>
-            </div>
-          </div>
-
-          <div class="bento-tech-pills">
-            <span class="tech-pill">Aerospace Tech</span>
-            <span class="tech-pill">UAV Telemetry</span>
-            <span class="tech-pill">Embedded Systems</span>
-            <span class="tech-pill">Data Preservation</span>
-            <span class="tech-pill">Sensors</span>
-          </div>
-        </div>
-
-        <div class="bento-card-actions">
-          <a href="https://github.com/Its-Abishek-18" target="_blank" rel="noopener noreferrer" class="btn-bento-primary">
-            <span>View Code</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-          </a>
-          <button class="btn-bento-secondary" onclick="openProjectModal('aerospace')">
-            <span>Details &amp; Story</span>
-            <span>→</span>
-          </button>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -2652,17 +2593,6 @@
           "Basics of AWS Cloud Computing verified through HCL GUVI.",
           "Explored virtual compute instances, scalable storage buckets (S3), and security access policies (IAM).",
           "Understanding of resilient cloud architecture patterns."
-        ],
-        github: "https://github.com/Its-Abishek-18"
-      },
-      aerospace: {
-        category: "AEROSPACE & HARDWARE",
-        title: "Aerospace Systems & UAV Prototyping",
-        desc: "Passion-driven exploration into unmanned aerial systems, telemetry protocols, and digital preservation concepts.",
-        bullets: [
-          "Study of UAV flight dynamics, sensor telemetry, and embedded computing.",
-          "Prototyping software architectures for flight controls and ground stations.",
-          "Digital preservation methodologies for system records and telemetry data."
         ],
         github: "https://github.com/Its-Abishek-18"
       }
