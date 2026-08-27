@@ -441,6 +441,72 @@
       margin-top: 0.25rem;
     }
 
+    /* About Narrative Box (Intro bio between heading and timeline) */
+    .about-narrative-box {
+      max-width: 52rem;
+      margin: 2.5rem auto 1.5rem auto;
+      padding: 1.85rem 2.25rem;
+      background: rgba(26, 26, 26, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1.25rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+      position: relative;
+      text-align: left;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .about-narrative-box:hover {
+      border-color: rgba(255, 97, 29, 0.35);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 97, 29, 0.1);
+    }
+
+    .about-narrative-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 15%;
+      right: 15%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-orange), transparent);
+    }
+
+    .about-bio-text {
+      font-size: 1.08rem;
+      line-height: 1.75;
+      color: #fff;
+      margin-bottom: 0.85rem;
+      font-family: var(--font-sans);
+    }
+
+    .about-bio-subtext {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: rgba(214, 210, 189, 0.85);
+      font-family: var(--font-sans);
+    }
+
+    .highlight-orange {
+      color: var(--color-orange);
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .about-narrative-box {
+        margin: 2rem 1rem 1rem 1rem;
+        padding: 1.35rem 1.25rem;
+      }
+      .about-bio-text {
+        font-size: 1rem;
+        line-height: 1.65;
+      }
+      .about-bio-subtext {
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+    }
+
     .timeline-outer-wrap {
       width: 100%;
       font-family: var(--font-sans);
@@ -1374,6 +1440,138 @@
       transform: translateY(0);
       opacity: 1;
     }
+
+    /* ==========================================================================
+       SECTION: TECHNICAL EXPERTISE & SKILLS
+       ========================================================================== */
+    .skills-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 6rem;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+      max-width: 1240px;
+      margin: 0 auto;
+      text-align: center;
+      width: 100%;
+    }
+
+    @media (min-width: 1024px) {
+      .skills-section {
+        padding-top: 8rem;
+      }
+    }
+
+    .skills-grid-deck {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      width: 100%;
+      margin-top: 3.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .skills-grid-deck {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.75rem;
+      }
+    }
+
+    .skill-category-card {
+      background-color: var(--color-terminal);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1.25rem;
+      padding: 1.75rem;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s, border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-category-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 97, 29, 0.12);
+      border-color: rgba(255, 97, 29, 0.35);
+    }
+
+    .skill-cat-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 0.85rem;
+    }
+
+    .skill-cat-icon {
+      font-size: 1.6rem;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+    }
+
+    .skill-cat-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.2rem;
+    }
+
+    .skill-cat-subtitle {
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      color: rgba(214, 210, 189, 0.6);
+    }
+
+    .skill-badges-deck {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .skill-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 9999px;
+      padding: 0.45rem 0.9rem;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--color-text);
+      transition: all 0.2s ease;
+    }
+
+    .skill-category-card:hover .skill-badge-pill {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.16);
+    }
+
+    .skill-badge-pill:hover {
+      background: rgba(255, 97, 29, 0.12) !important;
+      border-color: var(--color-orange) !important;
+      color: #fff !important;
+      transform: translateY(-2px);
+    }
+
+    .skill-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
   </style>
 </head>
 <body class="bg-[#333333] text-[#D6D2BD] font-sans antialiased">
@@ -1389,6 +1587,7 @@
       </a>
       <nav class="desktop-nav-links">
         <a class="nav-item" href="#about">About</a>
+        <a class="nav-item" href="#skills">Skills</a>
         <a class="nav-item" href="#projects">Projects</a>
         <a class="nav-item" href="#certifications">Certifications</a>
         <a class="nav-item" href="#contact">Contact</a>
@@ -1406,6 +1605,7 @@
           <div class="logo-monogram" style="width: 22px; height: 22px; font-size: 0.75rem; border-radius: 4px;">A</div>
         </a>
         <a class="nav-item" href="#about">About</a>
+        <a class="nav-item" href="#skills">Skills</a>
         <a class="nav-item" href="#projects">Projects</a>
         <a class="nav-item" href="#certifications">
           <span class="desktop-only-txt">Certifications</span>
@@ -1465,6 +1665,16 @@
   <section class="about-section" id="about">
     <h1 class="about-heading">ABOUT ME</h1>
     <h2 class="about-subheading">CODE.EAT.SLEEP.REPEAT</h2>
+
+    <!-- About Me Narrative Bio Card -->
+    <div class="about-narrative-box">
+      <p class="about-bio-text">
+        I am a passionate <span class="highlight-orange">Computer Science &amp; Engineering undergraduate</span> at <strong>Lovely Professional University</strong> with a strong foundation in computational logic, systems programming, and modern software development.
+      </p>
+      <p class="about-bio-subtext">
+        From building robust terminal automation tools in Python &amp; C++ to architecting working software prototypes in high-intensity 24-hour hackathons, I thrive on turning complex engineering challenges into clean, efficient, and user-centric software. Always driven to explore emerging systems, master modern developer tooling, and build products that make a meaningful impact.
+      </p>
+    </div>
 
     <div class="timeline-outer-wrap">
       <div class="timeline-container" id="timeline-box">
@@ -1589,19 +1799,147 @@
   <div class="parallax-scroller-wrap">
     <div class="parallax">
       <div class="scroller scroller-track-left">
-        <span>&lt;Python&gt; &lt;C++&gt; &lt;AWS Cloud&gt; &lt;CLI Tools&gt; &lt;UI/UX&gt; &lt;SQL&gt; &nbsp;</span>
-        <span>&lt;Python&gt; &lt;C++&gt; &lt;AWS Cloud&gt; &lt;CLI Tools&gt; &lt;UI/UX&gt; &lt;SQL&gt; &nbsp;</span>
-        <span>&lt;Python&gt; &lt;C++&gt; &lt;AWS Cloud&gt; &lt;CLI Tools&gt; &lt;UI/UX&gt; &lt;SQL&gt; &nbsp;</span>
+        <span>&lt;C++&gt; &lt;Python&gt; &lt;C&gt; &lt;JavaScript&gt; &lt;HTML5 / CSS3&gt; &lt;Node.js&gt; &nbsp;</span>
+        <span>&lt;C++&gt; &lt;Python&gt; &lt;C&gt; &lt;JavaScript&gt; &lt;HTML5 / CSS3&gt; &lt;Node.js&gt; &nbsp;</span>
+        <span>&lt;C++&gt; &lt;Python&gt; &lt;C&gt; &lt;JavaScript&gt; &lt;HTML5 / CSS3&gt; &lt;Node.js&gt; &nbsp;</span>
       </div>
     </div>
     <div class="parallax">
       <div class="scroller scroller-track-right">
-        <span>[AI Fundamentals] [Quantum Computing] [Aerospace Systems] [UAV Prototyping] [Video &amp; VFX] [Problem Solving] &nbsp;</span>
-        <span>[AI Fundamentals] [Quantum Computing] [Aerospace Systems] [UAV Prototyping] [Video &amp; VFX] [Problem Solving] &nbsp;</span>
-        <span>[AI Fundamentals] [Quantum Computing] [Aerospace Systems] [UAV Prototyping] [Video &amp; VFX] [Problem Solving] &nbsp;</span>
+        <span>[Linux: Kali &amp; Ubuntu] [Git &amp; GitHub] [Windows] [Problem Solving] [Teamwork] [Leadership] &nbsp;</span>
+        <span>[Linux: Kali &amp; Ubuntu] [Git &amp; GitHub] [Windows] [Problem Solving] [Teamwork] [Leadership] &nbsp;</span>
+        <span>[Linux: Kali &amp; Ubuntu] [Git &amp; GitHub] [Windows] [Problem Solving] [Teamwork] [Leadership] &nbsp;</span>
       </div>
     </div>
   </div>
+
+  <!-- ==========================================================================
+       SECTION: TECHNICAL EXPERTISE & SKILLS
+       ========================================================================== -->
+  <section class="skills-section" id="skills">
+    <h1 class="projects-heading">TECHNICAL EXPERTISE</h1>
+    <h2 class="projects-subheading">CORE SKILLS &amp; PROFICIENCIES</h2>
+
+    <div class="skills-grid-deck">
+      
+      <!-- Category 1: Programming Languages -->
+      <div class="skill-category-card">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon">💻</div>
+          <div>
+            <h3 class="skill-cat-title">Programming Languages</h3>
+            <p class="skill-cat-subtitle">Core algorithmic logic &amp; systems</p>
+          </div>
+        </div>
+        <div class="skill-badges-deck">
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#00599C;"></span>
+            <span class="skill-badge-name">C++</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#3776AB;"></span>
+            <span class="skill-badge-name">Python</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#A8B9CC;"></span>
+            <span class="skill-badge-name">C</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#F7DF1E;"></span>
+            <span class="skill-badge-name">JavaScript</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category 2: Frameworks & Web -->
+      <div class="skill-category-card">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon">🌐</div>
+          <div>
+            <h3 class="skill-cat-title">Frameworks &amp; Web</h3>
+            <p class="skill-cat-subtitle">Modern frontend &amp; runtime backend</p>
+          </div>
+        </div>
+        <div class="skill-badges-deck">
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#E34F26;"></span>
+            <span class="skill-badge-name">HTML5</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#1572B6;"></span>
+            <span class="skill-badge-name">CSS3</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#339933;"></span>
+            <span class="skill-badge-name">Node.js</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category 3: Platforms & Operating Systems -->
+      <div class="skill-category-card">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon">⚡</div>
+          <div>
+            <h3 class="skill-cat-title">Platforms &amp; Environments</h3>
+            <p class="skill-cat-subtitle">OS distributions &amp; version control</p>
+          </div>
+        </div>
+        <div class="skill-badges-deck">
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#557C94;"></span>
+            <span class="skill-badge-name">Linux (Kali Linux, Ubuntu)</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#F05032;"></span>
+            <span class="skill-badge-name">Git &amp; GitHub</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#0078D6;"></span>
+            <span class="skill-badge-name">Windows</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category 4: Professional Soft Skills -->
+      <div class="skill-category-card">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon">🤝</div>
+          <div>
+            <h3 class="skill-cat-title">Soft Skills &amp; Leadership</h3>
+            <p class="skill-cat-subtitle">Collaborative execution &amp; agility</p>
+          </div>
+        </div>
+        <div class="skill-badges-deck">
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#FF611D;"></span>
+            <span class="skill-badge-name">Communication</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#FF611D;"></span>
+            <span class="skill-badge-name">Problem Solving</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#FF611D;"></span>
+            <span class="skill-badge-name">Teamwork</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#FF611D;"></span>
+            <span class="skill-badge-name">Adaptability</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#FF611D;"></span>
+            <span class="skill-badge-name">Time Management</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#FF611D;"></span>
+            <span class="skill-badge-name">Leadership</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
   <!-- ==========================================================================
        SECTION 5: FEATURED PROJECTS (Sleek Modern 2-Column Bento Grid)
