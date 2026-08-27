@@ -1,4 +1,5 @@
-
+# IDE & Binaries
+Antigravity IDE/
 *.exe
 .vscode/
 
