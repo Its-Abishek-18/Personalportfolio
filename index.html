@@ -84,7 +84,7 @@
     /* ==========================================================================
        HEADER & FLOATING PILL DOCK NAVIGATION
        ========================================================================== */
-    .desktop-top-header {
+    .site-header {
       position: fixed;
       top: 0;
       width: 100%;
@@ -92,19 +92,20 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .top-header-inner {
+    .site-header-inner {
       width: 100%;
-      padding: 1rem 1rem;
+      padding: 1rem 1.5rem;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
     }
 
     @media (min-width: 768px) {
-      .top-header-inner {
+      .site-header-inner {
         padding: 1rem 4rem;
+        justify-content: space-between;
       }
     }
 
@@ -221,25 +222,6 @@
       .mobile-only-txt { display: inline; }
     }
 
-    /* Mobile header */
-    .mobile-header-top {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 50;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem 0;
-      transition: all 0.3s ease;
-    }
-
-    @media (min-width: 768px) {
-      .mobile-header-top {
-        display: none;
-      }
-    }
-
     /* ==========================================================================
        SECTION 1: HERO (Diagonal Squares Canvas + Rotating Language + JSON Terminal)
        ========================================================================== */
@@ -291,25 +273,19 @@
 
     /* Rotating Multi-Language Greeting (Exact Styling) */
     .hero-title-greeting {
-      display: flex;
-      flex-wrap: wrap;
-      white-space: pre-wrap;
+      display: inline-flex;
+      white-space: nowrap;
+      flex-wrap: nowrap;
       position: relative;
-      font-size: 3rem;
-      line-height: 1;
+      font-size: clamp(2.1rem, 7vw, 3.75rem);
+      line-height: 1.15;
       font-weight: 600;
       color: var(--color-orange);
-      padding: 2.5rem 0;
+      padding: 2rem 0;
       font-family: var(--font-sans);
       justify-content: center;
+      align-items: center;
       min-height: 1.3em;
-      overflow: hidden;
-    }
-
-    @media (min-width: 768px) {
-      .hero-title-greeting {
-        font-size: 3.75rem;
-      }
     }
 
     .char-item {
@@ -1394,11 +1370,11 @@
 <body class="bg-[#333333] text-[#D6D2BD] font-sans antialiased">
 
   <!-- ==========================================================================
-       DESKTOP TOP HEADER (Fixed on top, smoothly transitions on scroll)
+       SITE TOP HEADER (Universal Responsive Header)
        ========================================================================== -->
-  <div class="desktop-top-header hidden md:block" id="top-desktop-nav">
-    <div class="top-header-inner">
-      <a href="/" class="logo-container" aria-label="Abishek M">
+  <header class="site-header" id="top-site-nav">
+    <div class="site-header-inner">
+      <a href="#hero" class="logo-container" aria-label="Abishek M">
         <div class="logo-monogram">A</div>
         <span style="font-weight: 700; color: #fff;">Abishek M</span>
       </a>
@@ -1409,7 +1385,7 @@
         <a class="nav-item" href="#contact">Contact</a>
       </nav>
     </div>
-  </div>
+  </header>
 
   <!-- ==========================================================================
        CENTERED FLOATING PILL NAVIGATION (Universal across mobile, tablet & PC)
@@ -1429,14 +1405,6 @@
         <a class="nav-item" href="#contact">Contact</a>
       </nav>
     </div>
-  </div>
-
-  <!-- Mobile Top Logo Header -->
-  <div class="mobile-header-top md:hidden">
-    <a href="#hero" class="logo-container">
-      <div class="logo-monogram">A</div>
-      <span style="font-weight: 700; color: #fff;">Abishek M</span>
-    </a>
   </div>
 
   <!-- ==========================================================================
@@ -2199,16 +2167,22 @@
       }, 500);
 
       // 4. FLOATING DOCK VISIBILITY ON SCROLL
-      const topNav = document.getElementById('top-desktop-nav');
+      const topNav = document.getElementById('top-site-nav');
       const floatingDock = document.getElementById('floating-dock');
 
       window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
         if (scrollY > 120) {
-          if (topNav) topNav.style.opacity = '0';
+          if (topNav) {
+            topNav.style.opacity = '0';
+            topNav.style.pointerEvents = 'none';
+          }
           if (floatingDock) floatingDock.classList.add('visible');
         } else {
-          if (topNav) topNav.style.opacity = '1';
+          if (topNav) {
+            topNav.style.opacity = '1';
+            topNav.style.pointerEvents = 'auto';
+          }
           if (floatingDock) floatingDock.classList.remove('visible');
         }
       });
