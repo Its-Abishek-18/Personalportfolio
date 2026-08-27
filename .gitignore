@@ -1,1 +1,9 @@
+# Antigravity IDE & binaries
+Antigravity*
+*.exe
+.vscode/
 
+# Logs & temp
+*.log
+.DS_Store
+Thumbs.db

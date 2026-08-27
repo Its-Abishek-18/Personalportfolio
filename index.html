@@ -199,6 +199,26 @@
     .floating-pill-nav .nav-item {
       padding: 0.375rem 0.85rem;
       font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 480px) {
+      .floating-pill-nav {
+        gap: 0.1rem;
+        padding: 0.2rem;
+      }
+      .floating-pill-nav .nav-item {
+        padding: 0.28rem 0.5rem;
+        font-size: 0.76rem;
+      }
+    }
+
+    .desktop-only-txt { display: inline; }
+    .mobile-only-txt { display: none; }
+
+    @media (max-width: 480px) {
+      .desktop-only-txt { display: none; }
+      .mobile-only-txt { display: inline; }
     }
 
     /* Mobile header */
@@ -562,14 +582,15 @@
 
     .timeline-content-col {
       position: relative;
-      padding-left: 4rem;
-      padding-right: 1rem;
+      padding-left: 2.75rem;
+      padding-right: 0.75rem;
       width: 100%;
     }
 
     @media (min-width: 768px) {
       .timeline-content-col {
         padding-left: 4rem;
+        padding-right: 1rem;
       }
     }
 
@@ -834,7 +855,7 @@
       background-color: var(--color-terminal);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 1.5rem;
-      padding: 2rem;
+      padding: 1.5rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -842,6 +863,12 @@
       overflow: hidden;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s, border-color 0.3s;
+    }
+
+    @media (min-width: 768px) {
+      .bento-card {
+        padding: 2rem;
+      }
     }
 
     .bento-card:hover {
@@ -898,12 +925,14 @@
       background: #0d0d0d;
       border: 1px solid rgba(255, 255, 255, 0.07);
       border-radius: 10px;
-      padding: 1rem;
+      padding: 0.85rem;
       margin-bottom: 1.5rem;
       font-family: var(--font-mono);
-      font-size: 0.82rem;
+      font-size: clamp(0.75rem, 2vw, 0.82rem);
       line-height: 1.65;
       overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
       box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.6);
     }
 
@@ -1383,17 +1412,20 @@
   </div>
 
   <!-- ==========================================================================
-       CENTERED FLOATING PILL NAVIGATION (Exact match of reference scrolled state)
+       CENTERED FLOATING PILL NAVIGATION (Universal across mobile, tablet & PC)
        ========================================================================== -->
-  <div class="floating-pill-wrapper hidden md:flex" id="floating-dock">
+  <div class="floating-pill-wrapper flex" id="floating-dock">
     <div class="floating-pill-box">
       <nav class="floating-pill-nav">
         <a class="nav-item" href="#hero" aria-label="Home">
-          <div class="logo-monogram" style="width: 24px; height: 24px; font-size: 0.8rem; border-radius: 4px;">A</div>
+          <div class="logo-monogram" style="width: 22px; height: 22px; font-size: 0.75rem; border-radius: 4px;">A</div>
         </a>
         <a class="nav-item" href="#about">About</a>
         <a class="nav-item" href="#projects">Projects</a>
-        <a class="nav-item" href="#certifications">Certifications</a>
+        <a class="nav-item" href="#certifications">
+          <span class="desktop-only-txt">Certifications</span>
+          <span class="mobile-only-txt">Certs</span>
+        </a>
         <a class="nav-item" href="#contact">Contact</a>
       </nav>
     </div>
