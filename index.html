@@ -1181,88 +1181,330 @@
     /* ==========================================================================
        SECTION 7: CONTACT ME & INTERACTIVE FORM
        ========================================================================== */
+    /* ==========================================================================
+       SECTION 7: MODERN CYBER CONTACT CONSOLE
+       ========================================================================== */
     .contact-section {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding-top: 6rem;
-      padding-left: 1rem;
-      padding-right: 1rem;
-      max-width: 1100px;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+      max-width: 1160px;
       margin: 0 auto;
+      width: 100%;
     }
 
-    .contact-grid-deck {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
+    @media (min-width: 1024px) {
+      .contact-section {
+        padding-top: 8rem;
+      }
+    }
+
+    .contact-console-card {
       width: 100%;
       margin-top: 3.5rem;
+      background: rgba(26, 26, 26, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr;
+      transition: border-color 0.3s, box-shadow 0.3s;
     }
 
-    @media (min-width: 768px) {
-      .contact-grid-deck {
+    .contact-console-card:hover {
+      border-color: rgba(255, 97, 29, 0.3);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), 0 0 30px rgba(255, 97, 29, 0.08);
+    }
+
+    .contact-console-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-orange), transparent);
+    }
+
+    @media (min-width: 900px) {
+      .contact-console-card {
+        grid-template-columns: 1.1fr 1.3fr;
+      }
+    }
+
+    /* Left Column: Direct Channels & Status */
+    .contact-channels-column {
+      padding: 2.25rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      text-align: left;
+    }
+
+    @media (min-width: 900px) {
+      .contact-channels-column {
+        border-bottom: none;
+        border-right: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 3rem 2.5rem;
+      }
+    }
+
+    .contact-status-beacon {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      width: fit-content;
+      margin-bottom: 1.75rem;
+    }
+
+    .beacon-pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 10px #22c55e;
+      animation: beaconPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes beaconPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .beacon-text {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: #4ade80;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .contact-pitch-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-pitch-desc {
+      font-size: 0.92rem;
+      color: rgba(214, 210, 189, 0.8);
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+
+    .contact-channel-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .contact-channel-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 0.85rem;
+      padding: 0.85rem 1.15rem;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .contact-channel-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 97, 29, 0.35);
+      transform: translateX(4px);
+    }
+
+    .channel-left-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .channel-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 97, 29, 0.1);
+      border: 1px solid rgba(255, 97, 29, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-orange);
+      flex-shrink: 0;
+    }
+
+    .channel-info-text .channel-type {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: rgba(214, 210, 189, 0.5);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.15rem;
+    }
+
+    .channel-info-text .channel-val {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .channel-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      padding: 0.35rem 0.65rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-orange);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .channel-action-btn:hover {
+      background: var(--color-orange);
+      color: #000;
+    }
+
+    /* Right Column: High-Tech Form */
+    .contact-form-column {
+      padding: 2.25rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: rgba(18, 18, 18, 0.4);
+      text-align: left;
+    }
+
+    @media (min-width: 900px) {
+      .contact-form-column {
+        padding: 3rem 2.5rem;
+      }
+    }
+
+    .terminal-tab-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .terminal-tab-dots {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .terminal-tab-title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: rgba(214, 210, 189, 0.5);
+    }
+
+    .form-grid-2col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .form-grid-2col {
         grid-template-columns: 1fr 1fr;
       }
     }
 
-    .contact-form-panel {
-      background-color: var(--color-terminal);
-      border-radius: 12px;
-      padding: 2rem;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    .form-field-group {
+      margin-bottom: 1rem;
+      text-align: left;
     }
 
-    .contact-input-field {
-      margin-bottom: 1.25rem;
-    }
-
-    .contact-input-field label {
+    .form-field-group label {
       display: block;
       font-family: var(--font-mono);
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       color: rgba(214, 210, 189, 0.7);
       margin-bottom: 0.4rem;
+      letter-spacing: 0.03em;
     }
 
-    .contact-real-input {
+    .form-control-input {
       width: 100%;
-      background-color: #111111;
+      background: rgba(14, 14, 14, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 6px;
+      border-radius: 8px;
       padding: 0.75rem 1rem;
-      color: var(--color-text);
+      color: #fff;
       font-family: inherit;
-      font-size: 0.95rem;
-      transition: all 0.2s;
+      font-size: 0.92rem;
+      transition: all 0.2s ease;
     }
 
-    .contact-real-input:focus {
+    .form-control-input:focus {
       outline: none;
       border-color: var(--color-orange);
-      background-color: #161616;
+      background: rgba(20, 20, 20, 0.95);
+      box-shadow: 0 0 14px rgba(255, 97, 29, 0.2);
+    }
+
+    .form-control-input::placeholder {
+      color: rgba(214, 210, 189, 0.35);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
     }
 
     .contact-submit-btn {
       width: 100%;
-      background-color: var(--color-orange);
-      color: #000;
+      background: linear-gradient(135deg, #FF611D 0%, #E04D0C 100%);
+      color: #fff;
       font-weight: 700;
-      padding: 0.85rem;
-      border-radius: 9999px;
-      display: flex;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+      padding: 0.85rem 1.5rem;
+      border-radius: 10px;
+      border: none;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      transition: all 0.2s;
+      gap: 0.6rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
       margin-top: 0.5rem;
+      box-shadow: 0 4px 15px rgba(255, 97, 29, 0.3);
     }
 
     .contact-submit-btn:hover {
-      background-color: var(--color-orange-hover);
-      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 97, 29, 0.45);
+      background: linear-gradient(135deg, #ff7236 0%, #eb5514 100%);
+    }
+
+    .contact-submit-btn:active {
+      transform: translateY(0);
     }
 
     /* ==========================================================================
@@ -2189,61 +2431,126 @@
     <h1 class="projects-heading">CONTACT</h1>
     <h2 class="projects-subheading">LET'S CONNECT</h2>
 
-    <div class="contact-grid-deck">
+    <div class="contact-console-card">
       
-      <!-- Direct Contact Info Cards -->
-      <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <a href="mailto:abishekverse18@gmail.com" class="cert-card-box" style="flex-direction: row; align-items: center; gap: 1rem;">
-          <div style="color: var(--color-orange); font-size: 1.5rem;">✉</div>
-          <div>
-            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(214,210,189,0.5); text-transform: uppercase;">Email</div>
-            <div style="font-weight: 600; color: #fff;">abishekverse18@gmail.com</div>
+      <!-- Left Column: Direct Channels & Status -->
+      <div class="contact-channels-column">
+        <div>
+          <div class="contact-status-beacon">
+            <span class="beacon-pulse-dot"></span>
+            <span class="beacon-text">AVAILABLE FOR OPPORTUNITIES</span>
           </div>
-        </a>
 
-        <a href="https://linkedin.com/in/abishek-m18" target="_blank" rel="noopener noreferrer" class="cert-card-box" style="flex-direction: row; align-items: center; gap: 1rem;">
-          <div style="color: var(--color-orange); font-size: 1.5rem;">💼</div>
-          <div>
-            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(214,210,189,0.5); text-transform: uppercase;">LinkedIn</div>
-            <div style="font-weight: 600; color: #fff;">linkedin.com/in/abishek-m18</div>
-          </div>
-        </a>
+          <h3 class="contact-pitch-title">Let's build something exceptional together.</h3>
+          <p class="contact-pitch-desc">
+            Whether you have an inquiry, an internship opportunity, a project proposal, or just want to talk software engineering—my inbox is always open.
+          </p>
+        </div>
 
-        <a href="https://github.com/Its-Abishek-18" target="_blank" rel="noopener noreferrer" class="cert-card-box" style="flex-direction: row; align-items: center; gap: 1rem;">
-          <div style="color: var(--color-orange); font-size: 1.5rem;">🐙</div>
-          <div>
-            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(214,210,189,0.5); text-transform: uppercase;">GitHub</div>
-            <div style="font-weight: 600; color: #fff;">github.com/Its-Abishek-18</div>
+        <div class="contact-channel-list">
+          <!-- Email Channel with 1-click Copy -->
+          <div class="contact-channel-item">
+            <div class="channel-left-meta">
+              <div class="channel-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+              </div>
+              <div class="channel-info-text">
+                <div class="channel-type">Email</div>
+                <a href="mailto:abishekverse18@gmail.com" class="channel-val" style="color: #fff; text-decoration: none;">abishekverse18@gmail.com</a>
+              </div>
+            </div>
+            <button type="button" class="channel-action-btn" onclick="copyEmailToClipboard('abishekverse18@gmail.com', this)" aria-label="Copy Email">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+              </svg>
+              <span>Copy</span>
+            </button>
           </div>
-        </a>
+
+          <!-- LinkedIn Channel -->
+          <a href="https://linkedin.com/in/abishek-m18" target="_blank" rel="noopener noreferrer" class="contact-channel-item">
+            <div class="channel-left-meta">
+              <div class="channel-icon-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.64a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28"></path>
+                </svg>
+              </div>
+              <div class="channel-info-text">
+                <div class="channel-type">LinkedIn</div>
+                <div class="channel-val">in/abishek-m18</div>
+              </div>
+            </div>
+            <div class="channel-action-btn">
+              <span>Connect</span>
+              <span>↗</span>
+            </div>
+          </a>
+
+          <!-- GitHub Channel -->
+          <a href="https://github.com/Its-Abishek-18" target="_blank" rel="noopener noreferrer" class="contact-channel-item">
+            <div class="channel-left-meta">
+              <div class="channel-icon-box">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"></path>
+                </svg>
+              </div>
+              <div class="channel-info-text">
+                <div class="channel-type">GitHub</div>
+                <div class="channel-val">github.com/Its-Abishek-18</div>
+              </div>
+            </div>
+            <div class="channel-action-btn">
+              <span>Follow</span>
+              <span>↗</span>
+            </div>
+          </a>
+        </div>
       </div>
 
-      <!-- Validated Contact Form -->
-      <div class="contact-form-panel">
+      <!-- Right Column: Validated High-Tech Form -->
+      <div class="contact-form-column">
+        <div class="terminal-tab-bar">
+          <div class="terminal-tab-dots">
+            <span class="bento-dot" style="background:#FF5F56;"></span>
+            <span class="bento-dot" style="background:#FFBD2E;"></span>
+            <span class="bento-dot" style="background:#27C93F;"></span>
+          </div>
+          <span class="terminal-tab-title">dispatch_message.sh</span>
+        </div>
+
         <form id="contact-form-el">
-          <div class="contact-input-field">
-            <label for="usr-name">Name</label>
-            <input type="text" id="usr-name" class="contact-real-input" placeholder="Your Name" required />
+          <div class="form-grid-2col">
+            <div class="form-field-group">
+              <label for="usr-name">Your Name</label>
+              <input type="text" id="usr-name" class="form-control-input" placeholder="e.g. Alex Smith" required />
+            </div>
+
+            <div class="form-field-group">
+              <label for="usr-email">Your Email</label>
+              <input type="email" id="usr-email" class="form-control-input" placeholder="alex@example.com" required />
+            </div>
           </div>
 
-          <div class="contact-input-field">
-            <label for="usr-email">Email</label>
-            <input type="email" id="usr-email" class="contact-real-input" placeholder="your.email@example.com" required />
-          </div>
-
-          <div class="contact-input-field">
+          <div class="form-field-group">
             <label for="usr-subject">Subject</label>
-            <input type="text" id="usr-subject" class="contact-real-input" placeholder="Subject" required />
+            <input type="text" id="usr-subject" class="form-control-input" placeholder="Project Collaboration / Opportunity" required />
           </div>
 
-          <div class="contact-input-field">
+          <div class="form-field-group">
             <label for="usr-msg">Message</label>
-            <textarea id="usr-msg" class="contact-real-input" rows="4" placeholder="Your message here..." required></textarea>
+            <textarea id="usr-msg" class="form-control-input" rows="4" placeholder="Hello Abishek, I'd like to discuss..." required></textarea>
           </div>
 
           <button type="submit" class="contact-submit-btn">
-            <span>Send Message</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l14 0"></path><path d="M15 16l4 -4"></path><path d="M15 8l4 4"></path></svg>
+            <span>Dispatch Message</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
           </button>
         </form>
       </div>
@@ -2560,6 +2867,52 @@
         });
       }
     });
+
+    // Helper: Copy Email to Clipboard with Live Button Feedback & Toast
+    function copyEmailToClipboard(email, btnEl) {
+      const toast = document.getElementById('toast-notify');
+      const triggerToast = (msg) => {
+        if (toast) {
+          toast.textContent = msg;
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 3500);
+        }
+      };
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(email).then(() => {
+          triggerToast('Email copied to clipboard! 📋');
+          if (btnEl) {
+            const originalHTML = btnEl.innerHTML;
+            btnEl.innerHTML = '<span style="color:#4ade80;">✓ Copied!</span>';
+            setTimeout(() => { btnEl.innerHTML = originalHTML; }, 2000);
+          }
+        }).catch(() => {
+          fallbackCopy(email, btnEl, triggerToast);
+        });
+      } else {
+        fallbackCopy(email, btnEl, triggerToast);
+      }
+    }
+
+    function fallbackCopy(text, btnEl, triggerToast) {
+      const tempInput = document.createElement('input');
+      tempInput.value = text;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
+        triggerToast('Email copied to clipboard! 📋');
+        if (btnEl) {
+          const originalHTML = btnEl.innerHTML;
+          btnEl.innerHTML = '<span style="color:#4ade80;">✓ Copied!</span>';
+          setTimeout(() => { btnEl.innerHTML = originalHTML; }, 2000);
+        }
+      } catch (err) {
+        triggerToast(text);
+      }
+      document.body.removeChild(tempInput);
+    }
 
     // 9. PROJECT DETAIL MODALS
     const projectDetails = {
