@@ -1127,9 +1127,15 @@
       margin-top: 3.5rem;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 640px) {
       .certs-grid-deck {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .certs-grid-deck {
+        grid-template-columns: repeat(4, 1fr);
       }
     }
 
@@ -1722,6 +1728,9 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 1.75rem;
       }
+      .skills-grid-deck .skill-category-card:last-child:nth-child(odd) {
+        grid-column: span 2;
+      }
     }
 
     .skill-category-card {
@@ -1888,8 +1897,8 @@
         <pre class="terminal-pre">{
   <span style="color: #9cdcfe;">"about_me"</span>: {
     <span style="color: #9cdcfe;">"name"</span>: <span class="text-orange" id="decrypt-name">"Abishek M"</span>,
-    <span style="color: #9cdcfe;">"career-in-progress"</span>: <span class="text-orange" id="decrypt-career">"B.Tech Computer Science &amp; Engineering"</span>,
-    <span style="color: #9cdcfe;">"current-career-focus"</span>: <span class="text-orange" id="decrypt-focus">"Developer &amp; UI/UX Designer"</span>
+    <span style="color: #9cdcfe;">"career-in-progress"</span>: <span class="text-orange" id="decrypt-career">"Full-Stack Developer &amp; CS Undergrad"</span>,
+    <span style="color: #9cdcfe;">"current-career-focus"</span>: <span class="text-orange" id="decrypt-focus">"Cloud Security, Web Dev &amp; Automation"</span>
   }
 }</pre>
       </div>
@@ -1914,10 +1923,10 @@
     <!-- About Me Narrative Bio Card -->
     <div class="about-narrative-box">
       <p class="about-bio-text">
-        Hey there! I'm <span class="highlight-orange">Abishek M</span>, a Computer Science &amp; Engineering student at <strong>Lovely Professional University</strong> focused on building high-performance software, robust system tools, and developer-first workflows.
+        I am a <span class="highlight-orange">Full-Stack Developer</span> and Computer Science undergraduate at <strong>Lovely Professional University</strong> with experience in Web Development, Cloud Computing, Cybersecurity, and Backend Automation.
       </p>
       <p class="about-bio-subtext">
-        My technical playground spans algorithmic problem-solving in <strong>C++</strong> &amp; <strong>C</strong>, rapid automation engines in <strong>Python</strong>, and command-line environments across <strong>Linux</strong> (Kali &amp; Ubuntu). Driven by computational logic and clean UI/UX aesthetics, I thrive on deconstructing complex problems, exploring cloud infrastructure, and engineering resilient digital tools from the terminal up.
+        I engineer scalable, production-ready software using <strong>Python, C, C++, JavaScript, REST APIs, and AWS</strong>. Experienced in building secure cloud storage solutions (such as <em>Re:Link</em>), data sanitization pipelines, and role-based access control (RBAC) workflows, I am passionate about solving real-world engineering challenges with clean, robust, and secure code.
       </p>
     </div>
 
@@ -1940,24 +1949,24 @@
           <div class="timeline-content-col">
             <h3 class="timeline-year-mobile">2025 - Present</h3>
             <div>
-              <p class="timeline-summary">Embarking on advanced Computer Science, Cloud &amp; AI engineering</p>
+              <p class="timeline-summary">Advanced CS, Full-Stack Systems, Cloud Storage &amp; Cybersecurity</p>
               <div class="timeline-bullet-block">
-                <div class="timeline-bullet-item" style="color: var(--color-orange); font-weight: 600;">Latest update &amp; achievements:</div>
+                <div class="timeline-bullet-item" style="color: var(--color-orange); font-weight: 600;">Key Milestones &amp; Experience:</div>
                 <div class="timeline-bullet-item">
                   <span>🎓</span>
                   <span>Pursuing Bachelor of Technology in Computer Science &amp; Engineering @ <strong>Lovely Professional University</strong> (2025–2029)</span>
                 </div>
                 <div class="timeline-bullet-item">
-                  <span>🏆</span>
-                  <span>Collaborated in <strong>Infernoverse 24HRS Hackathon</strong>: Built and refined a working software prototype under intense 24-hour sprint pressure</span>
-                </div>
-                <div class="timeline-bullet-item">
-                  <span>💡</span>
-                  <span>Demonstrated technical adaptability, rapid problem-solving, and cross-disciplinary agility</span>
+                  <span>🛡️</span>
+                  <span><strong>Security &amp; Backend Prototyping Contributor</strong> @ INFERNOVERSE 24-Hour Hackathon (Nov 2025): Applied threat modeling and secure API coding</span>
                 </div>
                 <div class="timeline-bullet-item">
                   <span>☁️</span>
-                  <span>Mastering <strong>AWS Cloud Computing</strong> architecture &amp; foundational AI systems</span>
+                  <span>Engineered <strong>Re:Link</strong> – Secure Cloud Storage &amp; Resource Sharing Platform with token-based access delegation</span>
+                </div>
+                <div class="timeline-bullet-item">
+                  <span>💼</span>
+                  <span>Completed <strong>Deloitte Cyber Job Simulation</strong> (Forage) &amp; <strong>AWS Cloud Computing</strong> (HCL GUVI)</span>
                 </div>
               </div>
             </div>
@@ -1975,19 +1984,20 @@
           <div class="timeline-content-col">
             <h3 class="timeline-year-mobile">2024 - 2025</h3>
             <div>
-              <p class="timeline-summary">Foundations of programming, computational logic &amp; creative design</p>
+              <p class="timeline-summary">Foundations of systems programming, algorithms &amp; data security</p>
               <div class="timeline-bullet-block">
-                <div class="timeline-bullet-item" style="color: var(--color-orange); font-weight: 600;">Key achievements:</div>
+                <div class="timeline-bullet-item" style="color: var(--color-orange); font-weight: 600;">Academic &amp; Technical Foundation:</div>
                 <div class="timeline-bullet-item">
                   <span>👨🏻‍💻</span>
-                  <span>Wrote first programs in <strong>Python</strong> and <strong>C++</strong>; designed data models and CLI scripts</span>
+                  <span>Engineered Python CLI financial management &amp; data sanitization utilities with local encryption</span>
                 </div>
                 <div class="timeline-bullet-item">
                   <span>📜</span>
-                  <span>Completed Higher Secondary (12th Grade) @ <strong>Neelan Matric Hr Sec School, Chennai</strong></span>
+                  <span>Completed Higher Secondary Certificate (HSC – Class 12) @ <strong>Neelan Matric Hr Sec School, Chennai</strong> (2025)</span>
                 </div>
-                <div class="timeline-bullet-item" style="color: var(--color-text); opacity: 0.7; padding-top: 0.25rem;">
-                  ... and engineered practical command-line applications!
+                <div class="timeline-bullet-item">
+                  <span>🔒</span>
+                  <span>Studied Data Structures &amp; Algorithms, Cryptography foundations, and Linux CLI environments</span>
                 </div>
               </div>
             </div>
@@ -2005,16 +2015,16 @@
           <div class="timeline-content-col">
             <h3 class="timeline-year-mobile">2022 - 2023</h3>
             <div>
-              <p class="timeline-summary">Secondary school education &amp; initial creative multimedia exploration</p>
+              <p class="timeline-summary">Secondary school education &amp; foundational computing exploration</p>
               <div class="timeline-bullet-block">
                 <div class="timeline-bullet-item" style="color: var(--color-orange); font-weight: 600;">At a glance:</div>
                 <div class="timeline-bullet-item">
                   <span>🏫</span>
-                  <span>Completed Secondary School (10th Grade) @ <strong>Neelan Matric Hr Sec School, Chennai</strong></span>
+                  <span>Completed Secondary School Leaving Certificate (SSLC – Class 10) @ <strong>Neelan Matric Hr Sec School, Chennai</strong> (2023)</span>
                 </div>
                 <div class="timeline-bullet-item">
-                  <span>🎬</span>
-                  <span>Explored multimedia creation: Video Editing, VFX, and UI/UX design aesthetics</span>
+                  <span>🌐</span>
+                  <span>Explored foundational web design, UI/UX aesthetics, and responsive layout architectures</span>
                 </div>
               </div>
             </div>
@@ -2044,16 +2054,16 @@
   <div class="parallax-scroller-wrap">
     <div class="parallax">
       <div class="scroller scroller-track-left">
-        <span>&lt;C++&gt; &lt;Python&gt; &lt;C&gt; &lt;JavaScript&gt; &lt;HTML5 / CSS3&gt; &lt;Node.js&gt; &nbsp;</span>
-        <span>&lt;C++&gt; &lt;Python&gt; &lt;C&gt; &lt;JavaScript&gt; &lt;HTML5 / CSS3&gt; &lt;Node.js&gt; &nbsp;</span>
-        <span>&lt;C++&gt; &lt;Python&gt; &lt;C&gt; &lt;JavaScript&gt; &lt;HTML5 / CSS3&gt; &lt;Node.js&gt; &nbsp;</span>
+        <span>&lt;Python&gt; &lt;C++&gt; &lt;C&gt; &lt;JavaScript&gt; &lt;Bash&gt; &lt;REST APIs&gt; &lt;AWS Cloud&gt; &nbsp;</span>
+        <span>&lt;Python&gt; &lt;C++&gt; &lt;C&gt; &lt;JavaScript&gt; &lt;Bash&gt; &lt;REST APIs&gt; &lt;AWS Cloud&gt; &nbsp;</span>
+        <span>&lt;Python&gt; &lt;C++&gt; &lt;C&gt; &lt;JavaScript&gt; &lt;Bash&gt; &lt;REST APIs&gt; &lt;AWS Cloud&gt; &nbsp;</span>
       </div>
     </div>
     <div class="parallax">
       <div class="scroller scroller-track-right">
-        <span>[Linux: Kali &amp; Ubuntu] [Git &amp; GitHub] [Windows] [Problem Solving] [Teamwork] [Leadership] &nbsp;</span>
-        <span>[Linux: Kali &amp; Ubuntu] [Git &amp; GitHub] [Windows] [Problem Solving] [Teamwork] [Leadership] &nbsp;</span>
-        <span>[Linux: Kali &amp; Ubuntu] [Git &amp; GitHub] [Windows] [Problem Solving] [Teamwork] [Leadership] &nbsp;</span>
+        <span>[Cybersecurity] [Cloud Storage] [Access Control (RBAC)] [Threat Modeling] [File Sanitization] [Linux CLI] &nbsp;</span>
+        <span>[Cybersecurity] [Cloud Storage] [Access Control (RBAC)] [Threat Modeling] [File Sanitization] [Linux CLI] &nbsp;</span>
+        <span>[Cybersecurity] [Cloud Storage] [Access Control (RBAC)] [Threat Modeling] [File Sanitization] [Linux CLI] &nbsp;</span>
       </div>
     </div>
   </div>
@@ -2078,6 +2088,10 @@
         </div>
         <div class="skill-badges-deck">
           <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#A8B9CC;"></span>
+            <span class="skill-badge-name">C</span>
+          </div>
+          <div class="skill-badge-pill">
             <span class="skill-badge-dot" style="background:#00599C;"></span>
             <span class="skill-badge-name">C++</span>
           </div>
@@ -2086,23 +2100,23 @@
             <span class="skill-badge-name">Python</span>
           </div>
           <div class="skill-badge-pill">
-            <span class="skill-badge-dot" style="background:#A8B9CC;"></span>
-            <span class="skill-badge-name">C</span>
-          </div>
-          <div class="skill-badge-pill">
             <span class="skill-badge-dot" style="background:#F7DF1E;"></span>
             <span class="skill-badge-name">JavaScript</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#4EAA25;"></span>
+            <span class="skill-badge-name">Bash</span>
           </div>
         </div>
       </div>
 
-      <!-- Category 2: Frameworks & Web -->
+      <!-- Category 2: Web & Backend Development -->
       <div class="skill-category-card">
         <div class="skill-cat-header">
           <div class="skill-cat-icon">🌐</div>
           <div>
-            <h3 class="skill-cat-title">Frameworks &amp; Web</h3>
-            <p class="skill-cat-subtitle">Modern frontend &amp; runtime backend</p>
+            <h3 class="skill-cat-title">Web &amp; Backend Development</h3>
+            <p class="skill-cat-subtitle">Full-stack web, APIs &amp; automation</p>
           </div>
         </div>
         <div class="skill-badges-deck">
@@ -2115,70 +2129,123 @@
             <span class="skill-badge-name">CSS3</span>
           </div>
           <div class="skill-badge-pill">
-            <span class="skill-badge-dot" style="background:#339933;"></span>
-            <span class="skill-badge-name">Node.js</span>
+            <span class="skill-badge-dot" style="background:#F7DF1E;"></span>
+            <span class="skill-badge-name">JavaScript</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#FF611D;"></span>
+            <span class="skill-badge-name">REST APIs</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#3776AB;"></span>
+            <span class="skill-badge-name">Automation Scripts</span>
           </div>
         </div>
       </div>
 
-      <!-- Category 3: Platforms & Operating Systems -->
+      <!-- Category 3: Cloud Computing & Infrastructure -->
       <div class="skill-category-card">
         <div class="skill-cat-header">
-          <div class="skill-cat-icon">⚡</div>
+          <div class="skill-cat-icon">☁️</div>
           <div>
-            <h3 class="skill-cat-title">Platforms &amp; Environments</h3>
-            <p class="skill-cat-subtitle">OS distributions &amp; version control</p>
+            <h3 class="skill-cat-title">Cloud Computing &amp; Architecture</h3>
+            <p class="skill-cat-subtitle">Scalable infrastructure &amp; cloud storage</p>
           </div>
         </div>
         <div class="skill-badges-deck">
           <div class="skill-badge-pill">
-            <span class="skill-badge-dot" style="background:#557C94;"></span>
-            <span class="skill-badge-name">Linux (Kali Linux, Ubuntu)</span>
+            <span class="skill-badge-dot" style="background:#FF9900;"></span>
+            <span class="skill-badge-name">AWS IAM (Least Privilege)</span>
           </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#FF9900;"></span>
+            <span class="skill-badge-name">Security Groups</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#FF9900;"></span>
+            <span class="skill-badge-name">VPC Networking</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#FF9900;"></span>
+            <span class="skill-badge-name">CloudWatch</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#0078D6;"></span>
+            <span class="skill-badge-name">Cloud Storage Architecture</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category 4: Cybersecurity & Systems Security -->
+      <div class="skill-category-card">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon">🛡️</div>
+          <div>
+            <h3 class="skill-cat-title">Cybersecurity &amp; Systems</h3>
+            <p class="skill-cat-subtitle">Security models, defenses &amp; sanitization</p>
+          </div>
+        </div>
+        <div class="skill-badges-deck">
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#EF4444;"></span>
+            <span class="skill-badge-name">Access Control (RBAC)</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#EF4444;"></span>
+            <span class="skill-badge-name">Vulnerability Assessment</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#EF4444;"></span>
+            <span class="skill-badge-name">Threat Modeling</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#EF4444;"></span>
+            <span class="skill-badge-name">Data Encryption Foundations</span>
+          </div>
+          <div class="skill-badge-pill">
+            <span class="skill-badge-dot" style="background:#EF4444;"></span>
+            <span class="skill-badge-name">File Sanitization</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category 5: Tools & Core CS Foundations -->
+      <div class="skill-category-card">
+        <div class="skill-cat-header">
+          <div class="skill-cat-icon">⚡</div>
+          <div>
+            <h3 class="skill-cat-title">Tools &amp; Core CS Foundations</h3>
+            <p class="skill-cat-subtitle">Engineering toolchain &amp; fundamental computer science</p>
+          </div>
+        </div>
+        <div class="skill-badges-deck">
           <div class="skill-badge-pill">
             <span class="skill-badge-dot" style="background:#F05032;"></span>
             <span class="skill-badge-name">Git &amp; GitHub</span>
           </div>
           <div class="skill-badge-pill">
-            <span class="skill-badge-dot" style="background:#0078D6;"></span>
-            <span class="skill-badge-name">Windows</span>
+            <span class="skill-badge-dot" style="background:#557C94;"></span>
+            <span class="skill-badge-name">Linux CLI</span>
           </div>
-        </div>
-      </div>
-
-      <!-- Category 4: Professional Soft Skills -->
-      <div class="skill-category-card">
-        <div class="skill-cat-header">
-          <div class="skill-cat-icon">🤝</div>
-          <div>
-            <h3 class="skill-cat-title">Soft Skills &amp; Leadership</h3>
-            <p class="skill-cat-subtitle">Collaborative execution &amp; agility</p>
-          </div>
-        </div>
-        <div class="skill-badges-deck">
           <div class="skill-badge-pill">
-            <span class="skill-badge-dot" style="background:#FF611D;"></span>
-            <span class="skill-badge-name">Communication</span>
+            <span class="skill-badge-dot" style="background:#007ACC;"></span>
+            <span class="skill-badge-name">VS Code</span>
           </div>
           <div class="skill-badge-pill">
             <span class="skill-badge-dot" style="background:#FF611D;"></span>
-            <span class="skill-badge-name">Problem Solving</span>
+            <span class="skill-badge-name">Data Structures &amp; Algorithms</span>
           </div>
           <div class="skill-badge-pill">
             <span class="skill-badge-dot" style="background:#FF611D;"></span>
-            <span class="skill-badge-name">Teamwork</span>
+            <span class="skill-badge-name">Object-Oriented Programming (OOP)</span>
           </div>
           <div class="skill-badge-pill">
             <span class="skill-badge-dot" style="background:#FF611D;"></span>
-            <span class="skill-badge-name">Adaptability</span>
+            <span class="skill-badge-name">Operating Systems</span>
           </div>
           <div class="skill-badge-pill">
             <span class="skill-badge-dot" style="background:#FF611D;"></span>
-            <span class="skill-badge-name">Time Management</span>
-          </div>
-          <div class="skill-badge-pill">
-            <span class="skill-badge-dot" style="background:#FF611D;"></span>
-            <span class="skill-badge-name">Leadership</span>
+            <span class="skill-badge-name">Computer Networks</span>
           </div>
         </div>
       </div>
@@ -2195,16 +2262,16 @@
 
     <div class="projects-bento-grid">
       
-      <!-- Bento Card 1: Expense Tracker CLI -->
+      <!-- Bento Card 1: Re:Link – Secure Cloud Storage Platform -->
       <div class="bento-card">
         <div>
           <div class="bento-top-row">
-            <span class="bento-category-tag">PYTHON / CLI AUTOMATION</span>
-            <span class="bento-status-badge">2025 • COMPLETED</span>
+            <span class="bento-category-tag">CLOUD SECURITY / PYTHON &amp; REST APIS</span>
+            <span class="bento-status-badge">NOV 2025 • DEPLOYED</span>
           </div>
-          <h3 class="bento-title">Expense Tracker – Python CLI Tool</h3>
+          <h3 class="bento-title">Re:Link – Secure Cloud Storage Platform</h3>
           <p class="bento-desc">
-            A terminal-based personal financial utility that enables rapid logging, categorizing, and analysis of expenditures with atomic persistent CSV data serialization.
+            A centralized cloud storage and resource sharing platform enabling secure file uploads, access delegation, and asset retrieval with robust permission isolation.
           </p>
 
           <!-- Mini Terminal Preview Window -->
@@ -2213,34 +2280,97 @@
               <div class="bento-dot" style="background:#FF5F56;"></div>
               <div class="bento-dot" style="background:#FFBD2E;"></div>
               <div class="bento-dot" style="background:#27C93F;"></div>
-              <span class="bento-preview-title">expense_tracker.py</span>
+              <span class="bento-preview-title">relink_server.py</span>
             </div>
-            <div style="color: #9cdcfe;">$ python tracker.py --add "AWS Cloud Credits" -a 4500 -c Infra</div>
-            <div style="color: #4ade80;">[OK] Logged transaction to expenses.csv (ID #1042)</div>
-            <div style="color: #9cdcfe; margin-top: 0.25rem;">$ python tracker.py --summary --month current</div>
-            <div style="color: var(--color-orange);">Total Expenses: ₹18,450.00 | Remaining Budget: ₹31,550.00</div>
+            <div style="color: #9cdcfe;">$ python relink_server.py --port 8000</div>
+            <div style="color: #4ade80;">[TOKEN-AUTH] User Session Validated (Role: ResourceOwner - RBAC)</div>
+            <div style="color: #60a5fa;">[PIPELINE] File Ingestion: Anti-MIME Spoofing &amp; Sanitization [OK]</div>
+            <div style="color: var(--color-orange);">[STORAGE] Encrypted Blob Preserved &amp; Delegated Share Link Active</div>
           </div>
 
           <div class="bento-metrics-list">
             <div class="bento-metric-item">
-              <span class="bento-metric-icon">⚡</span>
-              <span>Robust persistent CSV data storage across reboots</span>
-            </div>
-            <div class="bento-metric-item">
-              <span class="bento-metric-icon">📊</span>
-              <span>Monthly breakdown &amp; category-based financial filtering</span>
+              <span class="bento-metric-icon">🔐</span>
+              <span>Token-based authentication &amp; RBAC permission isolation</span>
             </div>
             <div class="bento-metric-item">
               <span class="bento-metric-icon">🛡️</span>
-              <span>Strict input sanitization &amp; automated balance warnings</span>
+              <span>Backend validation pipeline preventing MIME spoofing &amp; execution</span>
+            </div>
+            <div class="bento-metric-item">
+              <span class="bento-metric-icon">📁</span>
+              <span>Responsive UI dashboards for folder navigation &amp; granular link sharing</span>
             </div>
           </div>
 
           <div class="bento-tech-pills">
-            <span class="tech-pill">Python 3</span>
-            <span class="tech-pill">CSV Engine</span>
-            <span class="tech-pill">CLI Parser</span>
-            <span class="tech-pill">Data Modeling</span>
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">REST APIs</span>
+            <span class="tech-pill">File Systems</span>
+            <span class="tech-pill">Access Control (RBAC)</span>
+            <span class="tech-pill">Git</span>
+            <span class="tech-pill">Cloud Storage</span>
+          </div>
+        </div>
+
+        <div class="bento-card-actions">
+          <a href="https://github.com/Its-Abishek-18" target="_blank" rel="noopener noreferrer" class="btn-bento-primary">
+            <span>View Code</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+          </a>
+          <button class="btn-bento-secondary" onclick="openProjectModal('relink')">
+            <span>Details &amp; Story</span>
+            <span>→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bento Card 2: Secure Python CLI Expense Tracker -->
+      <div class="bento-card">
+        <div>
+          <div class="bento-top-row">
+            <span class="bento-category-tag">CYBERSECURITY / CLI AUTOMATION</span>
+            <span class="bento-status-badge">2026 • COMPLETED</span>
+          </div>
+          <h3 class="bento-title">Secure CLI Expense Tracker &amp; Data Sanitizer</h3>
+          <p class="bento-desc">
+            A command-line financial management utility in Python featuring local encryption, data serialization, and strict input sanitization to eliminate injection attacks.
+          </p>
+
+          <!-- Mini Terminal Preview Window -->
+          <div class="bento-preview-window">
+            <div class="bento-preview-header">
+              <div class="bento-dot" style="background:#FF5F56;"></div>
+              <div class="bento-dot" style="background:#FFBD2E;"></div>
+              <div class="bento-dot" style="background:#27C93F;"></div>
+              <span class="bento-preview-title">secure_tracker.py</span>
+            </div>
+            <div style="color: #9cdcfe;">$ python secure_tracker.py --add "AWS Credits" -a 4500 --encrypt</div>
+            <div style="color: #4ade80;">[CIPHER] Local AES serialization verified (Hash: SHA-256)</div>
+            <div style="color: #60a5fa;">[SANITIZATION] Strict CSV injection filter applied [Clean]</div>
+            <div style="color: var(--color-orange);">[STORAGE] Transaction #1042 committed with atomic logging</div>
+          </div>
+
+          <div class="bento-metrics-list">
+            <div class="bento-metric-item">
+              <span class="bento-metric-icon">🔒</span>
+              <span>Local data encryption &amp; secure serialization mechanisms</span>
+            </div>
+            <div class="bento-metric-item">
+              <span class="bento-metric-icon">🛡️</span>
+              <span>Strict input validation routines preventing CSV file-injection</span>
+            </div>
+            <div class="bento-metric-item">
+              <span class="bento-metric-icon">📜</span>
+              <span>Modular logging logic ensuring transactional consistency</span>
+            </div>
+          </div>
+
+          <div class="bento-tech-pills">
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">Cryptography</span>
+            <span class="tech-pill">File I/O</span>
+            <span class="tech-pill">Data Sanitization</span>
             <span class="tech-pill">Terminal UX</span>
           </div>
         </div>
@@ -2257,16 +2387,16 @@
         </div>
       </div>
 
-      <!-- Bento Card 2: Infernoverse 24HRS Hackathon -->
+      <!-- Bento Card 3: Infernoverse Hackathon (Full-width showcase) -->
       <div class="bento-card">
         <div>
           <div class="bento-top-row">
-            <span class="bento-category-tag">24-HOUR SPRINT / PROTOTYPE</span>
-            <span class="bento-status-badge">2024 • SPRINT SHIPPED</span>
+            <span class="bento-category-tag">24-HOUR SPRINT / API SECURITY</span>
+            <span class="bento-status-badge">NOV 2025 • SPRINT SHIPPED</span>
           </div>
-          <h3 class="bento-title">Infernoverse 24HRS Hackathon Prototype</h3>
+          <h3 class="bento-title">INFERNOVERSE Hackathon – Security &amp; Backend Architecture</h3>
           <p class="bento-desc">
-            Architected, developed, and deployed an end-to-end working software prototype within a strict 24-hour sprint deadline under high-intensity hackathon conditions.
+            Engineered a working software prototype during an intensive 24-hour sprint, applying threat modeling, secure coding across backend APIs, and real-time security patches.
           </p>
 
           <!-- Mini Terminal Preview Window -->
@@ -2275,34 +2405,35 @@
               <div class="bento-dot" style="background:#FF5F56;"></div>
               <div class="bento-dot" style="background:#FFBD2E;"></div>
               <div class="bento-dot" style="background:#27C93F;"></div>
-              <span class="bento-preview-title">sprint_monitor.sh</span>
+              <span class="bento-preview-title">sprint_security.sh</span>
             </div>
-            <div style="color: #ff5f56;">[INFERNOVERSE SPRINT RUNNER] T-minus 24:00:00</div>
-            <div style="color: #4ade80;">[OK] Sprint Core Engine Compiled (0.84s)</div>
-            <div style="color: #60a5fa;">[OK] Architecture Validated &amp; Modular Tests Passed</div>
-            <div style="color: var(--color-orange);">[STATUS]: Prototype Shipped &amp; Live Demo Active</div>
+            <div style="color: #ff5f56;">[INFERNOVERSE 24H] Threat Modeling &amp; Surface Analysis Initiated</div>
+            <div style="color: #4ade80;">[API SECURITY] Backend Endpoints Hardened with Strict Validation</div>
+            <div style="color: #60a5fa;">[PATCH DEPLOY] Real-time Security Patches Committed (0.84s)</div>
+            <div style="color: var(--color-orange);">[STATUS] Functional Prototype Deployed Under Rapid Sprint Deadlines</div>
           </div>
 
           <div class="bento-metrics-list">
             <div class="bento-metric-item">
-              <span class="bento-metric-icon">🏆</span>
-              <span>24-hour non-stop rapid architectural prototyping</span>
-            </div>
-            <div class="bento-metric-item">
-              <span class="bento-metric-icon">🤝</span>
-              <span>Agile multi-disciplinary team coordination &amp; sync</span>
-            </div>
-            <div class="bento-metric-item">
               <span class="bento-metric-icon">🎯</span>
-              <span>Real-time problem decomposition &amp; crisis resolution</span>
+              <span>Applied threat modeling to identify critical attack surfaces</span>
+            </div>
+            <div class="bento-metric-item">
+              <span class="bento-metric-icon">🛡️</span>
+              <span>Delivered input validation workflows &amp; real-time security patches</span>
+            </div>
+            <div class="bento-metric-item">
+              <span class="bento-metric-icon">⚡</span>
+              <span>Collaborated across rapid sprint deadlines to deploy milestones</span>
             </div>
           </div>
 
           <div class="bento-tech-pills">
+            <span class="tech-pill">Threat Modeling</span>
+            <span class="tech-pill">Backend APIs</span>
+            <span class="tech-pill">Input Validation</span>
             <span class="tech-pill">Rapid Prototyping</span>
-            <span class="tech-pill">Software Architecture</span>
-            <span class="tech-pill">Agile Sprint</span>
-            <span class="tech-pill">Git Collaboration</span>
+            <span class="tech-pill">Git</span>
             <span class="tech-pill">Hackathon</span>
           </div>
         </div>
@@ -2313,68 +2444,6 @@
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
           </a>
           <button class="btn-bento-secondary" onclick="openProjectModal('hackathon')">
-            <span>Details &amp; Story</span>
-            <span>→</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Bento Card 3: Cloud Infrastructure (AWS) -->
-      <div class="bento-card">
-        <div>
-          <div class="bento-top-row">
-            <span class="bento-category-tag">CLOUD COMPUTING / INFRASTRUCTURE</span>
-            <span class="bento-status-badge">HCL GUVI CERTIFIED</span>
-          </div>
-          <h3 class="bento-title">AWS Scalable Cloud Architecture</h3>
-          <p class="bento-desc">
-            Configured and architected resilient cloud environments utilizing core AWS primitives with a focus on security, high availability, and least-privilege access.
-          </p>
-
-          <!-- Mini Terminal Preview Window -->
-          <div class="bento-preview-window">
-            <div class="bento-preview-header">
-              <div class="bento-dot" style="background:#FF5F56;"></div>
-              <div class="bento-dot" style="background:#FFBD2E;"></div>
-              <div class="bento-dot" style="background:#27C93F;"></div>
-              <span class="bento-preview-title">aws_topology.yml</span>
-            </div>
-            <div style="color: #9cdcfe;">$ aws cloud-topology --verify</div>
-            <div style="color: #4ade80;">[VPC 10.0.0.0/16] ──> [EC2 Linux Compute Node: healthy]</div>
-            <div style="color: #60a5fa;">                  └──> [S3 Encrypted Bucket: AES-256]</div>
-            <div style="color: var(--color-orange);">[IAM Policy]: Least-Privilege Enforced (HCL GUVI Verified)</div>
-          </div>
-
-          <div class="bento-metrics-list">
-            <div class="bento-metric-item">
-              <span class="bento-metric-icon">☁️</span>
-              <span>EC2 compute provisioning &amp; security groups</span>
-            </div>
-            <div class="bento-metric-item">
-              <span class="bento-metric-icon">📦</span>
-              <span>S3 bucket lifecycle management &amp; access policies</span>
-            </div>
-            <div class="bento-metric-item">
-              <span class="bento-metric-icon">🔒</span>
-              <span>IAM role management &amp; credential hardening</span>
-            </div>
-          </div>
-
-          <div class="bento-tech-pills">
-            <span class="tech-pill">AWS Cloud</span>
-            <span class="tech-pill">EC2 Compute</span>
-            <span class="tech-pill">S3 Storage</span>
-            <span class="tech-pill">IAM Security</span>
-            <span class="tech-pill">Cloud Architecture</span>
-          </div>
-        </div>
-
-        <div class="bento-card-actions">
-          <a href="https://github.com/Its-Abishek-18" target="_blank" rel="noopener noreferrer" class="btn-bento-primary">
-            <span>View Code</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-          </a>
-          <button class="btn-bento-secondary" onclick="openProjectModal('cloud')">
             <span>Details &amp; Story</span>
             <span>→</span>
           </button>
@@ -2392,6 +2461,16 @@
     <h2 class="projects-subheading">TRAINING &amp; CERTIFICATIONS</h2>
 
     <div class="certs-grid-deck">
+      <div class="cert-card-box">
+        <div>
+          <span class="cert-pill-badge">Cybersecurity &amp; Assessment</span>
+          <h3 class="cert-name-text">Deloitte Cyber Job Simulation</h3>
+        </div>
+        <div class="cert-org-row">
+          Issuer: <strong style="color: #fff;">Forage</strong>
+        </div>
+      </div>
+
       <div class="cert-card-box">
         <div>
           <span class="cert-pill-badge">Cloud Architecture</span>
@@ -2414,8 +2493,8 @@
 
       <div class="cert-card-box">
         <div>
-          <span class="cert-pill-badge">Quantum Paradigms</span>
-          <h3 class="cert-name-text">Basics of Quantum Computing</h3>
+          <span class="cert-pill-badge">Quantum &amp; Cryptography</span>
+          <h3 class="cert-name-text">Basics of Quantum Computing &amp; Cryptography</h3>
         </div>
         <div class="cert-org-row">
           Issuer: <strong style="color: #fff;">IBM SkillsBuild</strong>
@@ -2573,7 +2652,7 @@
     <div class="footer-row-content">
       <div class="footer-left-author">
         <p class="author-name">Abishek M</p>
-        <p class="author-role">Passionate learner. Innovative developer &amp; designer.</p>
+        <p class="author-role">Full-Stack Developer • Cloud &amp; Cybersecurity • Computer Science @ LPU</p>
       </div>
 
       <div class="footer-right-links">
@@ -2757,8 +2836,8 @@
 
       setTimeout(() => {
         decryptEffect('decrypt-name', 'Abishek M');
-        setTimeout(() => decryptEffect('decrypt-career', 'B.Tech Computer Science & Engineering'), 300);
-        setTimeout(() => decryptEffect('decrypt-focus', 'Developer & UI/UX Designer'), 600);
+        setTimeout(() => decryptEffect('decrypt-career', 'Full-Stack Developer & CS Undergrad'), 300);
+        setTimeout(() => decryptEffect('decrypt-focus', 'Cloud Security, Web Dev & Automation'), 600);
       }, 500);
 
       // 4. FLOATING DOCK VISIBILITY ON SCROLL
@@ -2916,36 +2995,40 @@
 
     // 9. PROJECT DETAIL MODALS
     const projectDetails = {
-      expense: {
-        category: "PYTHON / CLI AUTOMATION",
-        title: "Expense Tracker – Python CLI Tool",
-        desc: "A fully functional command-line expense tracker letting users log, categorize, and review daily expenses with persistent CSV file data storage.",
+      relink: {
+        category: "CLOUD SECURITY / PYTHON & REST APIS",
+        title: "Re:Link – Secure Cloud Storage Platform",
+        desc: "A centralized cloud storage and resource sharing platform enabling secure file uploads, access delegation, and asset retrieval with robust permission isolation.",
         bullets: [
-          "Built a menu-driven terminal interface to add, remove, and review financial transactions.",
-          "Persistent CSV storage preserving data integrity across reboot sessions.",
-          "Custom query filters for categorization and total expense aggregations."
+          "Implemented access control rules and secure token-based authentication to manage permissions and isolate private assets.",
+          "Engineered backend file handling pipelines with validation checks to prevent unauthorized file execution and MIME spoofing.",
+          "Designed clean, responsive UI dashboards for intuitive folder navigation and granular link sharing.",
+          "Tech Stack: Python, REST APIs, File Systems, Access Control (RBAC), Git."
+        ],
+        github: "https://github.com/Its-Abishek-18"
+      },
+      expense: {
+        category: "CYBERSECURITY / CLI AUTOMATION",
+        title: "Secure Python CLI Expense Tracker & Data Sanitizer",
+        desc: "A command-line financial management utility in Python featuring local encryption, data serialization, and strict input validation routines.",
+        bullets: [
+          "Built a command-line financial management utility in Python featuring local encryption and data serialization mechanisms.",
+          "Implemented strict input validation and data sanitization routines to prevent CSV file-injection vulnerabilities.",
+          "Designed a menu-driven interface with structured error handling and localized access control.",
+          "Engineered modular logging logic ensuring transactional consistency across persistent storage.",
+          "Tech Stack: Python, Cryptography, File I/O, Data Sanitization."
         ],
         github: "https://github.com/Its-Abishek-18"
       },
       hackathon: {
-        category: "24-HOUR SPRINT / HACKATHON",
-        title: "Infernoverse 24HRS Software Prototype",
-        desc: "Collaborated under intense time constraints to design, architect, and ship a functional prototype in a single 24-hour sprint.",
+        category: "24-HOUR SPRINT / API SECURITY",
+        title: "INFERNOVERSE Hackathon – Security & Backend Architecture",
+        desc: "Engineered a working software prototype during an intensive 24-hour development sprint, applying threat modeling and secure API coding.",
         bullets: [
-          "Applied rapid problem-solving and cross-disciplinary thinking to ideate, build, and refine solutions.",
-          "Demonstrated agility, technical resilience, and high-pressure team execution.",
-          "Evaluated for architectural feasibility and real-time execution."
-        ],
-        github: "https://github.com/Its-Abishek-18"
-      },
-      cloud: {
-        category: "CLOUD COMPUTING / AWS",
-        title: "AWS Cloud Infrastructure Deployments",
-        desc: "Practical hands-on implementations utilizing AWS cloud computing primitives.",
-        bullets: [
-          "Basics of AWS Cloud Computing verified through HCL GUVI.",
-          "Explored virtual compute instances, scalable storage buckets (S3), and security access policies (IAM).",
-          "Understanding of resilient cloud architecture patterns."
+          "Applied threat modeling to identify critical attack surfaces and implemented secure coding practices across backend APIs.",
+          "Delivered input validation workflows and real-time security patches to ensure prototype stability and data integrity.",
+          "Collaborated with a cross-functional team under rapid sprint deadlines to deploy functional milestones.",
+          "Demonstrated technical adaptability, rapid problem-solving, and cross-disciplinary agility."
         ],
         github: "https://github.com/Its-Abishek-18"
       }
